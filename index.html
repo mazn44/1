@@ -2,1159 +2,1910 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دليل التسويق الاحترافي | معرض إيفان للأثاث — دهوك</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>قسم التسويق  | معرض إيفان  — دهوك</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+/* ═══════════════════════════════════════════
+   ROOT — LIGHT / DARK THEME
+═══════════════════════════════════════════ */
 :root {
-  --ink:       #05080f;
-  --deep:      #080d1a;
-  --navy:      #0a1628;
-  --panel:     rgba(10,22,44,0.72);
-  --panel2:    rgba(6,14,30,0.85);
-  --emerald:   #00c896;
-  --emerald2:  #00e6a8;
-  --gold:      #e8c96a;
-  --gold2:     #f5d98a;
-  --sky:       #3dd6f5;
-  --coral:     #ff6b6b;
-  --white:     #f0f6ff;
-  --muted:     #7a92b8;
-  --border:    rgba(0,200,150,0.18);
-  --border2:   rgba(232,201,106,0.18);
-  --glow-e:    0 0 40px rgba(0,200,150,0.2);
-  --glow-g:    0 0 40px rgba(232,201,106,0.18);
-  --r:         22px;
+  --bg:#050b18;
+  --bg2:#070e20;
+  --surface:rgba(10,20,42,0.72);
+  --surface2:rgba(6,12,28,0.88);
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(168,85,247,0.25);
+  --text:#f0f6ff;
+  --muted:#7a92b8;
+  --muted2:#5a72a0;
+  --p:#a855f7;
+  --p2:#c084fc;
+  --p3:#7c3aed;
+  --pg:rgba(168,85,247,0.18);
+  --ok:#10b981;
+  --no:#ef4444;
+  --gold:#f59e0b;
+  --sky:#06b6d4;
+  --r:20px;
+  --r2:14px;
+  --sh:0 8px 40px rgba(0,0,0,0.5);
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;}
-html{scroll-behavior:smooth;}
+[data-theme="light"] {
+  --bg:#f0f4ff;
+  --bg2:#e8eefa;
+  --surface:rgba(255,255,255,0.82);
+  --surface2:rgba(245,248,255,0.95);
+  --border:rgba(0,0,0,0.07);
+  --border2:rgba(168,85,247,0.3);
+  --text:#0f172a;
+  --muted:#475569;
+  --muted2:#64748b;
+  --sh:0 8px 40px rgba(100,100,200,0.1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;scroll-behavior:smooth;}
+html{overflow-x:hidden;}
 body{
-  background:var(--ink);
-  color:var(--white);
-  overflow-x:hidden;
-  min-height:100vh;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+  transition:background .4s,color .4s;
 }
 
-/* ── NOISE TEXTURE OVERLAY ── */
+/* noise grain overlay */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity:.5;
+}
+
+/* radial bg glow */
 body::before{
-  content:'';
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;opacity:.6;
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 15%,rgba(168,85,247,0.12) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 80%,rgba(99,102,241,0.10) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 50%,rgba(6,182,212,0.05) 0%,transparent 70%);
 }
 
-/* ── SCROLLBAR ── */
+#pc{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.wrap{position:relative;z-index:1;}
+
 ::-webkit-scrollbar{width:6px;}
-::-webkit-scrollbar-track{background:var(--ink);}
-::-webkit-scrollbar-thumb{background:linear-gradient(var(--emerald),var(--gold));border-radius:10px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--p),var(--p2));border-radius:10px;}
 
-/* ═══════════════════════════════
-   CANVAS STARS
-═══════════════════════════════ */
-#stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
-
-/* ═══════════════════════════════
+/* ═══════════════════════════════════════════
    HEADER
-═══════════════════════════════ */
-header{
-  position:fixed;top:0;width:100%;z-index:1000;
-  background:rgba(5,8,15,0.9);
-  backdrop-filter:blur(24px);
+═══════════════════════════════════════════ */
+.hdr{
+  position:fixed;top:0;width:100%;z-index:200;
+  background:rgba(5,11,24,0.9);backdrop-filter:blur(28px);
   border-bottom:1px solid var(--border);
-  padding:14px 44px;
-  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 40px;display:flex;justify-content:space-between;align-items:center;
+  transition:background .4s;
 }
+[data-theme="light"] .hdr{background:rgba(240,244,255,0.92);}
 .brand{display:flex;align-items:center;gap:14px;}
-.brand-logo{
-  width:52px;height:52px;border-radius:14px;
-  background:linear-gradient(135deg,var(--emerald),var(--navy));
+.brand-icon{
+  width:44px;height:44px;border-radius:13px;
+  background:linear-gradient(135deg,var(--p),var(--p2));
   display:flex;align-items:center;justify-content:center;
-  font-size:22px;color:var(--emerald2);
-  border:1.5px solid var(--border);
-  box-shadow:var(--glow-e);
+  font-size:19px;color:#fff;
+  box-shadow:0 0 20px var(--pg);
+  animation:iconPulse 3s ease-in-out infinite;
 }
-.brand h1{
-  font-size:20px;font-weight:900;letter-spacing:.5px;
-  background:linear-gradient(90deg,var(--emerald2),var(--gold));
-  -webkit-background-clip:text;color:transparent;
+@keyframes iconPulse{0%,100%{box-shadow:0 0 20px var(--pg);}50%{box-shadow:0 0 36px rgba(168,85,247,0.4);}}
+.brand-text h1{font-size:17px;font-weight:900;color:var(--p);letter-spacing:.3px;}
+.brand-text p{font-size:10.5px;color:var(--muted);margin-top:1px;}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.dept-chip{
+  padding:6px 16px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:1px;
+  background:rgba(168,85,247,.08);border:1px solid var(--p);color:var(--p);
 }
-.brand p{font-size:12px;color:var(--muted);font-weight:500;margin-top:1px;}
-.header-badge{
-  display:flex;gap:10px;align-items:center;
+.theme-btn{
+  width:36px;height:36px;border-radius:10px;border:1px solid var(--border);
+  background:var(--surface);color:var(--muted);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:15px;
+  transition:.3s;
 }
-.badge{
-  padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;
-  letter-spacing:.5px;
-}
-.badge-e{background:rgba(0,200,150,.12);border:1px solid rgba(0,200,150,.35);color:var(--emerald2);}
-.badge-g{background:rgba(232,201,106,.10);border:1px solid rgba(232,201,106,.3);color:var(--gold);}
+.theme-btn:hover{border-color:var(--p);color:var(--p);}
 
-/* ═══════════════════════════════
+/* ═══════════════════════════════════════════
    HERO
-═══════════════════════════════ */
+═══════════════════════════════════════════ */
 .hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
-  padding:120px 5% 80px;
-  position:relative;
-  background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,150,.12) 0%, transparent 70%),
-             radial-gradient(ellipse 60% 40% at 80% 80%, rgba(232,201,106,.07) 0%, transparent 60%);
+  padding:130px 5% 70px;
+  background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(168,85,247,0.15) 0%,transparent 70%);
+  position:relative;overflow:hidden;
 }
-.hero-eyebrow{
+.hero-floating-icon{
+  font-size:clamp(60px,8vw,90px);color:var(--p);
+  filter:drop-shadow(0 0 30px rgba(168,85,247,0.6));
+  animation:float 3.5s ease-in-out infinite;
+  display:block;margin-bottom:24px;
+}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-16px) rotate(2deg);}}
+.hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(0,200,150,.08);border:1px solid var(--border);
-  color:var(--emerald);padding:8px 20px;border-radius:30px;
-  font-size:13px;font-weight:700;letter-spacing:1.5px;
-  margin-bottom:28px;
-  animation:fadeUp .6s ease both;
+  padding:8px 22px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1.5px;
+  background:rgba(168,85,247,.08);border:1px solid var(--p);color:var(--p);
+  margin-bottom:22px;animation:fadeUp .6s .1s both;
 }
 .hero h2{
-  font-size:clamp(2.4em,5vw,4.2em);
-  font-weight:900;line-height:1.15;
-  margin-bottom:20px;
-  animation:fadeUp .7s .1s ease both;
+  font-size:clamp(2em,5vw,3.8em);font-weight:900;line-height:1.15;
+  margin-bottom:14px;animation:fadeUp .6s .2s both;
 }
-.hero h2 .em{
-  background:linear-gradient(90deg,var(--emerald2),var(--sky));
-  -webkit-background-clip:text;color:transparent;
+.hero h2 em{
+  color:var(--p);font-style:normal;
+  text-shadow:0 0 30px rgba(168,85,247,0.5);
 }
-.hero h2 .gd{
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  -webkit-background-clip:text;color:transparent;
-}
-.hero-sub{
-  font-size:1.1em;color:var(--muted);max-width:700px;line-height:1.75;
-  margin-bottom:44px;animation:fadeUp .7s .2s ease both;
-}
-.hero-cta{
-  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
-  animation:fadeUp .7s .3s ease both;
-}
-.btn{
-  padding:14px 32px;border-radius:12px;font-size:15px;font-weight:700;
-  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  transition:all .3s;
-}
-.btn-primary{
-  background:linear-gradient(135deg,var(--emerald),#009e76);
-  color:#fff;box-shadow:0 6px 30px rgba(0,200,150,.35);
-  border:none;
-}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,200,150,.45);}
-.btn-outline{
-  background:transparent;
-  border:1.5px solid rgba(0,200,150,.4);
-  color:var(--emerald2);
-}
-.btn-outline:hover{background:rgba(0,200,150,.08);transform:translateY(-3px);}
+.hero-sub{font-size:1.05em;color:var(--muted);max-width:680px;margin:0 auto 30px;line-height:1.8;animation:fadeUp .6s .3s both;}
 
-/* Stats row */
-.stats-row{
-  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
-  margin-top:60px;padding-top:50px;
-  border-top:1px solid rgba(255,255,255,.06);
-  animation:fadeUp .7s .4s ease both;
-}
-.stat-item{text-align:center;}
-.stat-num{
-  font-size:2.4em;font-weight:900;
-  background:linear-gradient(90deg,var(--emerald2),var(--sky));
-  -webkit-background-clip:text;color:transparent;
-}
-.stat-label{font-size:13px;color:var(--muted);margin-top:4px;font-weight:600;}
-
-/* ═══════════════════════════════
-   SECTION HEADERS
-═══════════════════════════════ */
-.sec-head{
-  text-align:center;padding:80px 5% 10px;position:relative;
-}
-.sec-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 20px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1.5px;
-  margin-bottom:16px;
-}
-.tag-e{background:rgba(0,200,150,.08);border:1px solid var(--border);color:var(--emerald);}
-.tag-g{background:rgba(232,201,106,.08);border:1px solid var(--border2);color:var(--gold);}
-.tag-r{background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.25);color:var(--coral);}
-.tag-s{background:rgba(61,214,245,.08);border:1px solid rgba(61,214,245,.25);color:var(--sky);}
-
-.sec-head h3{font-size:clamp(1.8em,3vw,2.6em);font-weight:900;margin-bottom:12px;}
-.sec-head p{font-size:1em;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.7;}
-.divider{
-  width:60px;height:3px;
-  background:linear-gradient(90deg,var(--emerald),var(--sky));
-  border-radius:4px;margin:20px auto 0;
-}
-.divider-g{background:linear-gradient(90deg,var(--gold),var(--gold2));}
-
-/* ═══════════════════════════════
-   GRID
-═══════════════════════════════ */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  gap:24px;
-  max-width:1360px;margin:0 auto;
-  padding:36px 5% 60px;
-}
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
-
-/* ═══════════════════════════════
-   CARDS
-═══════════════════════════════ */
-.card{
-  background:var(--panel);
-  backdrop-filter:blur(20px);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:30px;
+/* TEAM TAGS */
+.hero-team{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px;animation:fadeUp .6s .4s both;}
+.team-tag{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 20px;border-radius:14px;font-size:13px;font-weight:800;
+  border:1px solid;cursor:default;transition:.3s;
   position:relative;overflow:hidden;
-  transition:all .4s cubic-bezier(.175,.885,.32,1.275);
+}
+.team-tag::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.05),transparent);
+  opacity:0;transition:.3s;
+}
+.team-tag:hover{transform:translateY(-3px);}
+.team-tag:hover::before{opacity:1;}
+.tt-mazen{background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.35);color:var(--p);}
+.tt-ayoub{background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.35);color:#f97316;}
+.tt-land{background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.35);color:var(--sky);}
+.tt-ku{font-size:10px;color:var(--muted);font-weight:500;}
+
+/* STATS */
+.stats-row{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  max-width:900px;margin:0 auto;animation:fadeUp .6s .5s both;
+}
+.stat{
+  flex:1;min-width:110px;max-width:180px;text-align:center;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:18px;padding:18px 12px;
+  border-top:3px solid var(--p);
+  transition:.3s;
+}
+.stat:hover{transform:translateY(-4px);border-color:var(--p);box-shadow:0 12px 30px var(--pg);}
+.stat-n{font-size:1.7em;font-weight:900;color:var(--p);display:block;line-height:1;}
+.stat-l{font-size:11px;color:var(--muted);margin-top:5px;display:block;}
+.stat-ku{font-size:10px;color:var(--muted2);display:block;margin-top:2px;}
+
+/* ═══════════════════════════════════════════
+   SECTION NAVIGATION BAR
+═══════════════════════════════════════════ */
+.nav-bar{
+  position:sticky;top:68px;z-index:90;
+  background:rgba(5,11,24,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:10px 5%;overflow-x:auto;
+  display:flex;gap:8px;align-items:center;
+  transition:background .4s;
+}
+[data-theme="light"] .nav-bar{background:rgba(240,244,255,0.9);}
+.nav-bar::-webkit-scrollbar{display:none;}
+.nav-link{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 16px;border-radius:10px;font-size:12px;font-weight:800;
+  color:var(--muted);text-decoration:none;border:1px solid transparent;
+  white-space:nowrap;transition:.25s;flex-shrink:0;
+}
+.nav-link:hover,.nav-link.active{
+  background:rgba(168,85,247,.1);border-color:var(--p);color:var(--p);
+}
+.nav-link i{font-size:13px;}
+
+/* ═══════════════════════════════════════════
+   MAIN WRAPPER
+═══════════════════════════════════════════ */
+.sec{max-width:1380px;margin:0 auto;padding:60px 5%;}
+.sec-gap{padding-bottom:80px;}
+
+/* SECTION HEADER */
+.sh{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:0 0 22px;border-bottom:1px solid var(--border);
+  margin-bottom:32px;position:relative;
+}
+.sh::after{
+  content:'';position:absolute;bottom:-1px;left:0;
+  width:80px;height:2px;
+  background:linear-gradient(90deg,var(--p),transparent);
+  border-radius:2px;
+}
+.sh-icon{
+  width:56px;height:56px;border-radius:16px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--p),var(--p2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:#fff;
+  box-shadow:0 0 28px var(--pg);
+  animation:iconPulse 3s ease-in-out infinite;
+}
+.sh-text h3{font-size:clamp(1.3em,3vw,1.8em);font-weight:900;color:var(--p);margin-bottom:4px;}
+.sh-text p{font-size:13px;color:var(--muted);line-height:1.6;}
+.sh-badge{
+  margin-right:auto;flex-shrink:0;
+  padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;
+  background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.25);color:var(--p);
+}
+
+/* ═══════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════ */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px;margin-bottom:28px;}
+.grid3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.grid2{grid-template-columns:repeat(auto-fit,minmax(440px,1fr));}
+.full{grid-column:1/-1;}
+
+/* ═══════════════════════════════════════════
+   CARDS
+═══════════════════════════════════════════ */
+.card{
+  background:var(--surface);backdrop-filter:blur(24px);
+  border:1px solid var(--border);border-radius:var(--r);
+  padding:28px;box-shadow:var(--sh);
+  position:relative;overflow:hidden;
+  transition:all .4s cubic-bezier(.175,.885,.32,1.2);
   opacity:0;transform:translateY(28px);
 }
-.card.visible{opacity:1;transform:translateY(0);}
+.card.vis{opacity:1;transform:translateY(0);}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--p),transparent);
+}
 .card::after{
-  content:'';position:absolute;top:0;left:-80%;
-  width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.025),transparent);
-  transform:skewX(-20deg);transition:.6s;
+  content:'';position:absolute;top:-60%;right:-30%;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,var(--pg) 0%,transparent 70%);
+  opacity:0;transition:.5s;pointer-events:none;
 }
+.card:hover::after{opacity:.6;}
 .card:hover{
-  transform:translateY(-8px) scale(1.015);
-  border-color:rgba(0,200,150,.4);
-  box-shadow:0 20px 50px rgba(0,200,150,.12);
+  transform:translateY(-8px) scale(1.008);
+  border-color:var(--border2);
+  box-shadow:0 24px 60px var(--pg);
 }
-.card:hover::after{left:120%;}
 
-.card-g{border-color:var(--border2);}
-.card-g:hover{border-color:rgba(232,201,106,.5);box-shadow:0 20px 50px rgba(232,201,106,.1);}
-.card-r{border-color:rgba(255,107,107,.2);}
-.card-r:hover{border-color:rgba(255,107,107,.45);box-shadow:0 20px 50px rgba(255,107,107,.1);}
-.card-s{border-color:rgba(61,214,245,.2);}
-.card-s:hover{border-color:rgba(61,214,245,.45);box-shadow:0 20px 50px rgba(61,214,245,.1);}
+/* card variant colors */
+.card-ok::before{background:linear-gradient(90deg,transparent,var(--ok),transparent);}
+.card-ok:hover{border-color:rgba(16,185,129,.35);box-shadow:0 24px 60px rgba(16,185,129,.1);}
+.card-no::before{background:linear-gradient(90deg,transparent,var(--no),transparent);}
+.card-no:hover{border-color:rgba(239,68,68,.35);box-shadow:0 24px 60px rgba(239,68,68,.1);}
+.card-gold::before{background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.card-gold:hover{border-color:rgba(245,158,11,.35);box-shadow:0 24px 60px rgba(245,158,11,.1);}
+.card-sky::before{background:linear-gradient(90deg,transparent,var(--sky),transparent);}
+.card-sky:hover{border-color:rgba(6,182,212,.35);box-shadow:0 24px 60px rgba(6,182,212,.1);}
 
-.card-glow-top{
-  position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--emerald),transparent);
+/* card header */
+.ch{display:flex;align-items:center;gap:12px;margin-bottom:22px;position:relative;z-index:2;}
+.ch i{font-size:1.5em;color:var(--p);animation:iconPulse 3s infinite;}
+.ch h4{font-size:clamp(1em,2vw,1.2em);font-weight:900;color:var(--text);}
+.ch-ok i{color:var(--ok);}
+.ch-no i{color:var(--no);}
+.ch-gold i{color:var(--gold);}
+.ch-sky i{color:var(--sky);}
+
+/* ═══════════════════════════════════════════
+   PERSON CARDS
+═══════════════════════════════════════════ */
+.person-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:30px 26px;
+  position:relative;overflow:hidden;
+  transition:all .4s cubic-bezier(.175,.885,.32,1.2);
+  opacity:0;transform:translateY(28px);
 }
-.card-glow-top.gold{background:linear-gradient(90deg,transparent,var(--gold),transparent);}
-.card-glow-top.sky{background:linear-gradient(90deg,transparent,var(--sky),transparent);}
-.card-glow-top.coral{background:linear-gradient(90deg,transparent,var(--coral),transparent);}
-
-.icon-box{
-  width:54px;height:54px;border-radius:14px;
+.person-card.vis{opacity:1;transform:translateY(0);}
+.person-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px var(--pg);}
+.person-avatar{
+  width:70px;height:70px;border-radius:20px;
   display:flex;align-items:center;justify-content:center;
-  font-size:24px;margin-bottom:18px;
+  font-size:30px;margin-bottom:16px;
+  position:relative;
 }
-.icon-e{background:rgba(0,200,150,.1);color:var(--emerald2);border:1px solid rgba(0,200,150,.2);}
-.icon-g{background:rgba(232,201,106,.1);color:var(--gold);border:1px solid rgba(232,201,106,.2);}
-.icon-r{background:rgba(255,107,107,.1);color:var(--coral);border:1px solid rgba(255,107,107,.2);}
-.icon-s{background:rgba(61,214,245,.1);color:var(--sky);border:1px solid rgba(61,214,245,.2);}
+.person-avatar::after{
+  content:'';position:absolute;inset:-3px;border-radius:23px;
+  border:2px solid;animation:borderSpin 4s linear infinite;
+}
+.pa-mazen{background:rgba(168,85,247,.15);color:var(--p);}
+.pa-mazen::after{border-color:var(--p);}
+.pa-ayoub{background:rgba(249,115,22,.15);color:#f97316;}
+.pa-ayoub::after{border-color:#f97316;}
+.pa-land{background:rgba(6,182,212,.15);color:var(--sky);}
+.pa-land::after{border-color:var(--sky);}
+@keyframes borderSpin{0%{clip-path:inset(0 0 95% 0);}25%{clip-path:inset(0 0 0 95%);}50%{clip-path:inset(95% 0 0 0);}75%{clip-path:inset(0 95% 0 0);}100%{clip-path:inset(0 0 95% 0);}}
+.person-card h4{font-size:1.15em;font-weight:900;margin-bottom:4px;}
+.person-card .role{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:8px;display:inline-block;margin-bottom:14px;}
+.role-mazen{background:rgba(168,85,247,.1);color:var(--p);border:1px solid rgba(168,85,247,.2);}
+.role-ayoub{background:rgba(249,115,22,.1);color:#f97316;border:1px solid rgba(249,115,22,.2);}
+.role-land{background:rgba(6,182,212,.1);color:var(--sky);border:1px solid rgba(6,182,212,.2);}
+.person-card .ku-name{font-size:11px;color:var(--muted);margin-bottom:14px;font-weight:500;}
+.person-duties{list-style:none;margin-top:8px;}
+.person-duties li{
+  position:relative;padding:7px 26px 7px 8px;margin-bottom:5px;
+  font-size:13px;line-height:1.55;
+  border-radius:9px;background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.04);
+  transition:.2s;color:var(--muted);
+}
+.person-duties li:hover{background:rgba(255,255,255,.05);color:var(--text);}
+.person-duties li::before{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-size:10px;width:16px;height:16px;border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+}
+.pd-mazen li::before{content:'M';background:rgba(168,85,247,.2);color:var(--p);}
+.pd-ayoub li::before{content:'A';background:rgba(249,115,22,.2);color:#f97316;}
+.pd-land li::before{content:'L';background:rgba(6,182,212,.2);color:var(--sky);}
+.person-duties li strong{color:var(--text);font-weight:700;}
+.person-ku{font-size:10.5px;color:var(--muted2);margin-top:2px;display:block;font-weight:500;}
 
-.card-title{font-size:18px;font-weight:800;margin-bottom:16px;color:var(--white);}
-.card-title.em{color:var(--emerald2);}
-.card-title.gd{color:var(--gold);}
-.card-title.sk{color:var(--sky);}
-.card-title.cr{color:var(--coral);}
+/* ═══════════════════════════════════════════
+   RULES LIST
+═══════════════════════════════════════════ */
+.rl{list-style:none;display:flex;flex-direction:column;gap:10px;position:relative;z-index:2;}
+.rl li{
+  position:relative;padding:11px 42px 11px 12px;
+  font-size:13.5px;line-height:1.65;
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.04);
+  transition:.25s;color:var(--muted);
+}
+.rl li:hover{background:rgba(255,255,255,.05);color:var(--text);transform:translateX(-4px);}
+.rl li strong{color:var(--text);font-weight:800;}
+.rl li .ku-note{font-size:10px;color:var(--muted2);display:block;margin-top:3px;font-weight:500;}
+.rl li::before{
+  font-family:'Font Awesome 6 Free';font-weight:900;
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;
+}
+.ok-list li::before{content:'\f00c';color:var(--ok);background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);}
+.no-list li::before{content:'\f00d';color:var(--no);background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);}
 
-/* Lists */
-.c-list{list-style:none;}
-.c-list li{
-  position:relative;padding-right:30px;
-  margin-bottom:12px;font-size:14.5px;
-  line-height:1.65;color:rgba(240,246,255,.82);
+/* label header for list */
+.lb-hd{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:900;padding:7px 16px;border-radius:11px;
+  margin-bottom:16px;
 }
-.c-list li::before{
-  content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;
-  position:absolute;right:0;top:3px;
-  font-size:10px;width:20px;height:20px;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:rgba(0,200,150,.15);color:var(--emerald2);
-}
-.c-list.gold li::before{background:rgba(232,201,106,.15);color:var(--gold);}
-.c-list.sky li::before{background:rgba(61,214,245,.15);color:var(--sky);}
-.c-list.coral li::before{content:'\f071';background:rgba(255,107,107,.12);color:var(--coral);}
-.c-list.fix li::before{content:'\f0ad';background:rgba(0,200,150,.12);color:var(--emerald2);}
-.c-list.rocket li::before{content:'\f135';background:rgba(232,201,106,.12);color:var(--gold);}
-.c-list.star li::before{content:'\f005';background:rgba(61,214,245,.12);color:var(--sky);}
+.lb-ok{background:rgba(16,185,129,.1);color:var(--ok);border:1px solid rgba(16,185,129,.25);}
+.lb-no{background:rgba(239,68,68,.1);color:var(--no);border:1px solid rgba(239,68,68,.25);}
 
-.c-list strong{color:var(--white);font-weight:700;}
-.chip{
-  display:inline-block;font-size:11px;padding:2px 10px;border-radius:20px;
-  font-weight:700;margin:1px 2px;vertical-align:middle;
+/* ═══════════════════════════════════════════
+   STEPS PROTOCOL
+═══════════════════════════════════════════ */
+.steps{display:flex;flex-direction:column;gap:12px;position:relative;z-index:2;}
+.step{
+  display:flex;align-items:flex-start;gap:14px;
+  background:rgba(0,0,0,.22);border-radius:14px;padding:15px;
+  border-right:3px solid var(--p);transition:.3s;
 }
-.chip-e{background:rgba(0,200,150,.12);color:var(--emerald2);border:1px solid rgba(0,200,150,.25);}
-.chip-g{background:rgba(232,201,106,.12);color:var(--gold);border:1px solid rgba(232,201,106,.25);}
-.chip-r{background:rgba(255,107,107,.12);color:var(--coral);border:1px solid rgba(255,107,107,.25);}
-.chip-s{background:rgba(61,214,245,.12);color:var(--sky);border:1px solid rgba(61,214,245,.25);}
-
-/* Info box */
-.info-box{
-  background:rgba(0,0,0,.3);border-radius:14px;padding:16px 18px;
-  margin-top:16px;border-right:3px solid var(--emerald);
-}
-.info-box.gold{border-right-color:var(--gold);}
-.info-box.sky{border-right-color:var(--sky);}
-.info-box h5{font-size:14px;font-weight:800;color:var(--emerald2);margin-bottom:6px;}
-.info-box.gold h5{color:var(--gold);}
-.info-box.sky h5{color:var(--sky);}
-.info-box p{font-size:13.5px;color:var(--muted);line-height:1.6;}
-
-/* ═══════════════════════════════
-   TABLE CARD
-═══════════════════════════════ */
-.table-wrap{overflow-x:auto;}
-.fancy-table{width:100%;border-collapse:separate;border-spacing:0 6px;font-size:14px;}
-.fancy-table th{
-  background:rgba(0,200,150,.08);
-  color:var(--emerald2);padding:10px 14px;
-  text-align:right;font-weight:800;
-  border-radius:0;
-}
-.fancy-table th:first-child{border-radius:0 10px 10px 0;}
-.fancy-table th:last-child{border-radius:10px 0 0 10px;}
-.fancy-table td{
-  padding:11px 14px;
-  background:rgba(255,255,255,.03);
-  border-top:1px solid rgba(255,255,255,.04);
-  border-bottom:1px solid rgba(255,255,255,.04);
-  vertical-align:top;
-}
-.fancy-table tr td:first-child{border-radius:0 10px 10px 0;}
-.fancy-table tr td:last-child{border-radius:10px 0 0 10px;}
-.fancy-table .err{color:var(--coral);font-weight:700;}
-.fancy-table .sol{color:var(--emerald2);font-weight:700;}
-.fancy-table .gd{color:var(--gold);font-weight:700;}
-.fancy-table .sk{color:var(--sky);font-weight:700;}
-.fancy-table tr:hover td{background:rgba(0,200,150,.04);}
-
-/* Gold table variant */
-.fancy-table.gold-t th{background:rgba(232,201,106,.08);color:var(--gold);}
-
-/* ═══════════════════════════════
-   TIMELINE — 7-day plan
-═══════════════════════════════ */
-.timeline{max-width:900px;margin:0 auto;padding:36px 5% 60px;}
-.day-row{
-  display:grid;grid-template-columns:80px 1fr;
-  gap:0 24px;margin-bottom:8px;
-  opacity:0;transform:translateX(20px);
-  transition:all .5s;
-}
-.day-row.visible{opacity:1;transform:translateX(0);}
-.day-num{
-  display:flex;flex-direction:column;align-items:center;
-  padding-top:14px;
-}
-.day-circle{
-  width:42px;height:42px;border-radius:50%;
-  background:linear-gradient(135deg,var(--emerald),#009e76);
+[data-theme="light"] .step{background:rgba(168,85,247,.04);}
+.step:hover{background:rgba(0,0,0,.38);transform:translateX(-4px);}
+[data-theme="light"] .step:hover{background:rgba(168,85,247,.08);}
+.step-n{
+  width:36px;height:36px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--p),var(--p2));
   display:flex;align-items:center;justify-content:center;
   font-size:13px;font-weight:900;color:#fff;
-  box-shadow:0 0 20px rgba(0,200,150,.3);
-  flex-shrink:0;
+  box-shadow:0 4px 14px var(--pg);
 }
-.day-circle.gold{background:linear-gradient(135deg,var(--gold),#c89d2a);}
-.day-line{width:2px;flex:1;background:linear-gradient(var(--emerald),transparent);margin-top:6px;min-height:30px;}
-.day-body{
-  background:var(--panel);border:1px solid var(--border);
-  border-radius:16px;padding:20px 24px;margin-bottom:16px;
-}
-.day-title{font-size:16px;font-weight:800;color:var(--emerald2);margin-bottom:10px;}
-.day-title.gd{color:var(--gold);}
-.day-sub{font-size:13.5px;color:var(--muted);margin-bottom:8px;font-weight:600;}
-.day-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.step-n.ok{background:linear-gradient(135deg,var(--ok),#34d399);}
+.step-n.no{background:linear-gradient(135deg,var(--no),#f87171);}
+.step-n.gold{background:linear-gradient(135deg,var(--gold),#fbbf24);}
+.step-n.sky{background:linear-gradient(135deg,var(--sky),#22d3ee);}
+.step-b h5{font-size:13.5px;font-weight:900;color:var(--text);margin-bottom:4px;}
+.step-b p{font-size:12.5px;color:var(--muted);line-height:1.6;}
+.step-b .ku{font-size:11px;color:var(--muted2);margin-top:4px;font-weight:500;}
 
-/* ═══════════════════════════════
-   VIDEO FORMULA CARD
-═══════════════════════════════ */
-.vid-formula{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-  margin-top:18px;
+/* ═══════════════════════════════════════════
+   BUBBLE (chat style script)
+═══════════════════════════════════════════ */
+.bub{
+  background:rgba(0,0,0,.28);border-radius:16px;border-bottom-right-radius:0;
+  padding:16px;margin-bottom:12px;
+  border:1px solid rgba(255,255,255,.04);
+  border-right:4px solid var(--p);
+  transition:.3s;
+}
+[data-theme="light"] .bub{background:rgba(168,85,247,.04);}
+.bub:hover{background:rgba(0,0,0,.4);border-right-color:var(--p2);}
+.bub-badge{
+  display:inline-block;padding:3px 12px;border-radius:8px;
+  font-size:11px;font-weight:900;margin-bottom:12px;letter-spacing:.3px;
+  background:rgba(168,85,247,.2);color:var(--p2);
+}
+.bub-lbl{font-size:10px;color:var(--muted2);font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px;display:block;}
+.bub-ku{font-size:13px;font-weight:700;color:var(--p2);line-height:1.65;margin-bottom:8px;}
+.bub-ar{font-size:14px;color:var(--text);line-height:1.65;font-weight:500;}
+.bub-note{
+  display:inline-flex;align-items:center;gap:6px;margin-top:8px;
+  font-size:12px;font-weight:700;padding:4px 12px;border-radius:7px;
+}
+.bub-ok{background:rgba(16,185,129,.1);color:var(--ok);}
+.bub-no{background:rgba(239,68,68,.1);color:var(--no);}
+
+/* ═══════════════════════════════════════════
+   RULE BAR 70-20-10
+═══════════════════════════════════════════ */
+.rule-bar-wrap{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+  padding:32px;text-align:center;position:relative;overflow:hidden;
+}
+.rule-bar-wrap::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--p),transparent);
+}
+.rb-title{font-size:1.15em;font-weight:900;color:var(--text);margin-bottom:22px;}
+.rb-title em{color:var(--p);font-style:normal;}
+.rule-bar{
+  display:flex;height:52px;border-radius:16px;overflow:hidden;margin-bottom:24px;
+  box-shadow:inset 0 2px 16px rgba(0,0,0,.5);
+}
+.seg{
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;color:#fff;font-size:1rem;
+  cursor:pointer;transition:.4s;
+}
+.seg:hover{filter:brightness(1.25);text-shadow:0 0 10px #fff;}
+.s70{width:70%;background:linear-gradient(90deg,#5b21b6,#7c3aed,var(--p));}
+.s20{width:20%;background:linear-gradient(90deg,var(--p),var(--p2));}
+.s10{width:10%;background:linear-gradient(90deg,var(--p2),#e879f9);}
+.rb-desc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.rb-item{padding:12px;border-radius:12px;border:1px solid var(--border);transition:.3s;}
+.rb-item:hover{border-color:var(--border2);background:rgba(168,85,247,.05);}
+.rb-item h4{color:var(--text);font-size:.95rem;font-weight:900;margin-bottom:4px;}
+.rb-item p{color:var(--muted);font-size:.83rem;line-height:1.5;}
+
+/* ═══════════════════════════════════════════
+   PRINCIPLES BOXES
+═══════════════════════════════════════════ */
+.prin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+.prin{
+  background:rgba(0,0,0,.25);border:1px solid var(--border);
+  border-radius:18px;padding:26px 20px;text-align:center;
+  transition:.4s;position:relative;overflow:hidden;
+  opacity:0;transform:translateY(20px);
+}
+.prin.vis{opacity:1;transform:translateY(0);}
+[data-theme="light"] .prin{background:rgba(168,85,247,.04);}
+.prin:hover{
+  background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.3);
+  transform:translateY(-6px);box-shadow:0 16px 40px var(--pg);
+}
+.prin i{
+  font-size:2.4em;color:var(--p);margin-bottom:14px;display:block;
+  filter:drop-shadow(0 0 14px var(--pg));
+  animation:float 3s ease-in-out infinite;
+}
+.prin:nth-child(2) i{animation-delay:.6s;}
+.prin:nth-child(3) i{animation-delay:1.2s;}
+.prin:nth-child(4) i{animation-delay:1.8s;}
+.prin h4{color:var(--text);font-size:1.05rem;font-weight:900;margin-bottom:6px;}
+.prin p{color:var(--muted);font-size:.88rem;line-height:1.6;}
+.prin .ku-p{font-size:10px;color:var(--muted2);margin-top:4px;font-weight:500;}
+
+/* ═══════════════════════════════════════════
+   VIDEO FORMULA CARDS
+═══════════════════════════════════════════ */
+.vid-timeline{
+  display:flex;flex-direction:column;gap:0;
+  position:relative;z-index:2;
+}
+.vid-timeline::before{
+  content:'';position:absolute;right:27px;top:0;bottom:0;
+  width:2px;background:linear-gradient(var(--p),transparent);
 }
 .vid-step{
-  background:rgba(0,0,0,.35);border-radius:12px;
-  padding:16px;text-align:center;
-  border-top:2px solid transparent;
+  display:flex;gap:18px;margin-bottom:24px;
+  position:relative;
 }
-.vid-step:nth-child(1){border-top-color:var(--coral);}
-.vid-step:nth-child(2){border-top-color:var(--emerald);}
-.vid-step:nth-child(3){border-top-color:var(--gold);}
-.vid-step .sec{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;}
-.vid-step:nth-child(1) .sec{color:var(--coral);}
-.vid-step:nth-child(2) .sec{color:var(--emerald2);}
-.vid-step:nth-child(3) .sec{color:var(--gold);}
-.vid-step p{font-size:13px;color:rgba(240,246,255,.75);line-height:1.5;}
+.vs-dot{
+  width:56px;height:56px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85em;font-weight:900;color:#fff;
+  position:relative;z-index:1;
+  border:3px solid var(--bg);
+  box-shadow:0 0 20px var(--pg);
+  animation:iconPulse 3s ease-in-out infinite;
+}
+.vsd-hook{background:linear-gradient(135deg,#ef4444,#f97316);}
+.vsd-value{background:linear-gradient(135deg,var(--p),var(--p2));}
+.vsd-cta{background:linear-gradient(135deg,var(--ok),#059669);}
+.vsd-ku{background:linear-gradient(135deg,var(--sky),#0284c7);}
+.vs-content{flex:1;background:rgba(0,0,0,.22);border-radius:14px;padding:16px 18px;border-right:3px solid;}
+[data-theme="light"] .vs-content{background:rgba(0,0,0,.04);}
+.vs-hook .vs-content{border-color:#ef4444;}
+.vs-value .vs-content{border-color:var(--p);}
+.vs-cta .vs-content{border-color:var(--ok);}
+.vs-ku .vs-content{border-color:var(--sky);}
+.vs-time{font-size:11px;font-weight:900;letter-spacing:1px;margin-bottom:6px;}
+.vs-hook .vs-time{color:#ef4444;}
+.vs-value .vs-time{color:var(--p);}
+.vs-cta .vs-time{color:var(--ok);}
+.vs-ku .vs-time{color:var(--sky);}
+.vs-content h5{font-size:14px;font-weight:900;color:var(--text);margin-bottom:6px;}
+.vs-content p{font-size:13px;color:var(--muted);line-height:1.6;}
+.vs-content .example{
+  margin-top:8px;padding:8px 12px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  font-size:12.5px;color:var(--text);font-style:italic;
+}
+[data-theme="light"] .vs-content .example{background:rgba(0,0,0,.04);}
 
-/* ═══════════════════════════════
-   CHATBOT FLOW
-═══════════════════════════════ */
-.bot-flow{margin-top:18px;}
-.bot-msg{
-  background:rgba(0,200,150,.07);border:1px solid rgba(0,200,150,.2);
-  border-radius:14px;padding:12px 16px;margin-bottom:10px;
-  font-size:13.5px;line-height:1.6;
-}
-.bot-msg .label{font-size:11px;color:var(--emerald2);font-weight:800;margin-bottom:4px;}
-.bot-reply{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;padding:12px 16px;margin-bottom:10px;
-  font-size:13px;line-height:1.6;color:var(--muted);
-  margin-right:20px;
-}
-.bot-reply .label{font-size:11px;color:var(--muted);font-weight:700;margin-bottom:4px;}
+/* ═══════════════════════════════════════════
+   TABLE
+═══════════════════════════════════════════ */
+.tbl-wrap{overflow-x:auto;border-radius:var(--r2);}
+.tbl{width:100%;border-collapse:separate;border-spacing:0 6px;font-size:13.5px;}
+.tbl th{background:rgba(168,85,247,.08);color:var(--p);padding:11px 16px;text-align:right;font-weight:900;}
+.tbl th:first-child{border-radius:0 12px 12px 0;}
+.tbl th:last-child{border-radius:12px 0 0 12px;}
+.tbl td{padding:11px 16px;background:rgba(255,255,255,.025);color:var(--text);transition:.2s;}
+.tbl td:first-child{border-radius:0 9px 9px 0;}
+.tbl td:last-child{border-radius:9px 0 0 9px;}
+.tbl tr:hover td{background:rgba(168,85,247,.05);}
+[data-theme="light"] .tbl td{background:rgba(0,0,0,.025);}
+[data-theme="light"] .tbl th{background:rgba(168,85,247,.07);}
 
-/* ═══════════════════════════════
-   COMPETITION / LIVE SECTION
-═══════════════════════════════ */
-.comp-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:18px;margin-top:16px;
-}
-.comp-card{
-  background:rgba(0,0,0,.3);border-radius:14px;padding:18px;
-  border-right:3px solid;
-}
-.comp-card.live{border-color:var(--coral);}
-.comp-card.contest{border-color:var(--gold);}
-.comp-card.group{border-color:var(--sky);}
-.comp-card.discount{border-color:var(--emerald);}
-.comp-card h5{font-size:15px;font-weight:800;margin-bottom:10px;}
-.comp-card.live h5{color:var(--coral);}
-.comp-card.contest h5{color:var(--gold);}
-.comp-card.group h5{color:var(--sky);}
-.comp-card.discount h5{color:var(--emerald2);}
-.comp-card ul{list-style:none;}
-.comp-card ul li{font-size:13.5px;color:var(--muted);padding:4px 0;padding-right:18px;position:relative;line-height:1.5;}
-.comp-card ul li::before{content:'→';position:absolute;right:0;color:inherit;font-size:12px;}
-.comp-card.live ul li::before{color:var(--coral);}
-.comp-card.contest ul li::before{color:var(--gold);}
-.comp-card.group ul li::before{color:var(--sky);}
-.comp-card.discount ul li::before{color:var(--emerald2);}
+/* ═══════════════════════════════════════════
+   CHIPS
+═══════════════════════════════════════════ */
+.chip{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;margin:1px;}
+.c-p{background:rgba(168,85,247,.1);color:var(--p);border:1px solid rgba(168,85,247,.25);}
+.c-g{background:rgba(16,185,129,.1);color:var(--ok);border:1px solid rgba(16,185,129,.25);}
+.c-r{background:rgba(239,68,68,.1);color:var(--no);border:1px solid rgba(239,68,68,.25);}
+.c-sky{background:rgba(6,182,212,.1);color:var(--sky);border:1px solid rgba(6,182,212,.25);}
+.c-gold{background:rgba(245,158,11,.1);color:var(--gold);border:1px solid rgba(245,158,11,.25);}
 
-/* ═══════════════════════════════
-   FULL-WIDTH STRIP
-═══════════════════════════════ */
-.strip{
-  background:linear-gradient(135deg,rgba(0,200,150,.07),rgba(232,201,106,.05));
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:50px 5%;margin:0;
+/* ═══════════════════════════════════════════
+   GOLDEN RULE BOX
+═══════════════════════════════════════════ */
+.golden{
+  background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(168,85,247,.06));
+  border:1px solid rgba(245,158,11,.35);border-radius:16px;
+  padding:20px;text-align:center;margin-top:18px;position:relative;z-index:2;
 }
-.strip-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
-.strip h3{font-size:clamp(1.6em,2.5vw,2.2em);font-weight:900;margin-bottom:14px;}
-.strip p{color:var(--muted);line-height:1.75;font-size:15px;}
+.golden i{font-size:1.8em;color:var(--gold);margin-bottom:10px;display:block;animation:float 3s infinite;}
+.golden h5{font-size:1em;font-weight:900;color:var(--text);margin-bottom:6px;}
+.golden p{font-size:13px;font-weight:600;line-height:1.7;color:var(--muted);}
+.golden .ku{font-size:10.5px;color:var(--muted2);margin-top:6px;}
 
-/* ═══════════════════════════════
-   CHECKLIST MORNING
-═══════════════════════════════ */
-.checklist{list-style:none;margin-top:16px;}
-.checklist li{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);
-  font-size:14.5px;color:rgba(240,246,255,.85);line-height:1.6;
+/* ═══════════════════════════════════════════
+   INFO BOX
+═══════════════════════════════════════════ */
+.info{
+  background:rgba(0,0,0,.2);border-radius:12px;padding:16px 18px;
+  border-right:3px solid var(--p);margin-top:14px;
 }
-.checklist li:last-child{border-bottom:none;}
-.check-time{
-  flex-shrink:0;padding:4px 10px;border-radius:8px;
-  background:rgba(0,200,150,.1);color:var(--emerald2);
-  font-size:12px;font-weight:800;letter-spacing:.5px;
-  border:1px solid rgba(0,200,150,.2);
-  margin-top:1px;
+[data-theme="light"] .info{background:rgba(168,85,247,.04);}
+.info h6{font-size:13px;font-weight:900;color:var(--p);margin-bottom:6px;}
+.info p{font-size:12.5px;color:var(--muted);line-height:1.65;}
+
+/* ═══════════════════════════════════════════
+   WARNING / ALERT BOX
+═══════════════════════════════════════════ */
+.alert{
+  display:flex;align-items:flex-start;gap:14px;
+  background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);
+  border-radius:14px;padding:16px;margin-top:14px;position:relative;z-index:2;
+}
+.alert i{font-size:1.4em;color:var(--no);flex-shrink:0;margin-top:2px;}
+.alert p{font-size:13px;font-weight:600;line-height:1.65;color:var(--text);}
+.alert .ku{font-size:10.5px;color:var(--muted2);margin-top:4px;}
+
+.tip{
+  display:flex;align-items:flex-start;gap:14px;
+  background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.25);
+  border-radius:14px;padding:16px;margin-top:14px;position:relative;z-index:2;
+}
+.tip i{font-size:1.4em;color:var(--ok);flex-shrink:0;margin-top:2px;}
+.tip p{font-size:13px;font-weight:600;line-height:1.65;color:var(--text);}
+
+/* ═══════════════════════════════════════════
+   PLATFORM CARDS
+═══════════════════════════════════════════ */
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;}
+.pl-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);padding:20px 14px;text-align:center;
+  transition:.3s;opacity:0;transform:scale(.95);
+}
+.pl-card.vis{opacity:1;transform:scale(1);}
+.pl-card:hover{transform:translateY(-5px) scale(1.02);border-color:var(--border2);box-shadow:0 12px 30px var(--pg);}
+.pl-card i{font-size:2em;margin-bottom:10px;display:block;}
+.pl-card h5{font-size:13px;font-weight:900;color:var(--text);margin-bottom:4px;}
+.pl-card p{font-size:11px;color:var(--muted);line-height:1.5;}
+.pl-card .pl-ku{font-size:10px;color:var(--muted2);margin-top:2px;}
+.pl-ig i{color:#e1306c;}
+.pl-tt i{color:#fff;}
+.pl-yt i{color:#ff0000;}
+.pl-sc i{color:#fffc00;}
+.pl-fb i{color:#1877f2;}
+.pl-wa i{color:#25d366;}
+.pl-gg i{color:#4285f4;}
+.pl-gm i{color:#0f9d58;}
+
+/* ═══════════════════════════════════════════
+   SEPARATOR
+═══════════════════════════════════════════ */
+.divider{
+  height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);
+  margin:50px 0;
 }
 
-/* ═══════════════════════════════
+/* ═══════════════════════════════════════════
    FOOTER
-═══════════════════════════════ */
+═══════════════════════════════════════════ */
 footer{
-  background:rgba(4,7,13,.95);
-  border-top:1px solid rgba(0,200,150,.12);
-  padding:50px 5% 30px;
-  text-align:center;
+  background:rgba(3,6,15,.95);border-top:1px solid var(--border);
+  padding:50px 5% 30px;text-align:center;position:relative;z-index:2;
 }
-.footer-brand{
-  font-size:22px;font-weight:900;letter-spacing:2px;
-  background:linear-gradient(90deg,var(--emerald2),var(--gold));
-  -webkit-background-clip:text;color:transparent;
-  margin-bottom:10px;
+[data-theme="light"] footer{background:rgba(230,235,255,.95);}
+.ft-inner{max-width:800px;margin:0 auto;}
+.ft-brand{
+  font-size:1.3em;font-weight:900;letter-spacing:2px;
+  background:linear-gradient(90deg,var(--p),var(--p2));
+  -webkit-background-clip:text;color:transparent;margin-bottom:6px;
 }
-.footer-links{
-  display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:20px;
+.ft-sub{font-size:12px;color:var(--muted);margin-bottom:20px;line-height:1.7;}
+.socials{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.sb{
+  width:42px;height:42px;border-radius:12px;
+  background:rgba(255,255,255,.04);color:var(--p);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15em;border:1px solid var(--border);
+  text-decoration:none;transition:.3s;
 }
-.footer-links a{color:var(--muted);font-size:13px;text-decoration:none;transition:.2s;}
-.footer-links a:hover{color:var(--emerald2);}
-.footer-copy{color:rgba(122,146,184,.45);font-size:12.5px;line-height:1.8;}
-.footer-copy span{color:var(--emerald2);font-weight:700;}
+.sb:hover{background:var(--p);color:#fff;transform:translateY(-4px);box-shadow:0 8px 20px var(--pg);}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.35);
+  color:#25d366;padding:11px 26px;border-radius:30px;
+  font-weight:800;font-size:.95em;text-decoration:none;transition:.3s;margin-bottom:20px;
+}
+.wa-btn:hover{background:#25d366;color:#fff;box-shadow:0 10px 25px rgba(37,211,102,.3);transform:scale(1.04);}
+.ft-copy{color:rgba(122,146,184,.4);font-size:12px;line-height:1.9;}
+.ft-copy span{color:var(--p);font-weight:700;}
 
-/* ═══════════════════════════════
+/* ═══════════════════════════════════════════
    ANIMATIONS
-═══════════════════════════════ */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(22px);}
-  to{opacity:1;transform:translateY(0);}
-}
+═══════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 
-/* ═══════════════════════════════
+/* ═══════════════════════════════════════════
    RESPONSIVE
-═══════════════════════════════ */
+═══════════════════════════════════════════ */
 @media(max-width:768px){
-  header{padding:12px 18px;}
-  .brand h1{font-size:16px;}
-  .grid{padding:20px 14px 40px;}
-  .timeline{padding:20px 14px 40px;}
-  .vid-formula{grid-template-columns:1fr;}
-  .strip-inner{grid-template-columns:1fr;gap:24px;}
-  .stats-row{gap:24px;}
-  .day-row{grid-template-columns:54px 1fr;gap:0 14px;}
+  .hdr{padding:11px 16px;}
+  .hero{padding:110px 16px 60px;}
+  .sec{padding:50px 14px;}
+  .grid,.grid2,.grid3{grid-template-columns:1fr;}
+  .rb-desc{grid-template-columns:1fr;}
+  .stats-row{gap:10px;}
+  .nav-bar{padding:8px 14px;}
+  .vid-timeline::before{display:none;}
+  .platform-grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));}
+  .prin-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .prin-grid{grid-template-columns:1fr;}
+  .hero-team{flex-direction:column;align-items:center;}
 }
 </style>
 </head>
 <body>
-
-<canvas id="stars"></canvas>
+<canvas id="pc"></canvas>
+<div class="wrap">
 
 <!-- ══════════════ HEADER ══════════════ -->
-<header>
+<header class="hdr">
   <div class="brand">
-    <div class="brand-logo"><i class="fa-solid fa-store"></i></div>
-    <div>
-      <h1>IVAN FURNITURE — دليل التسويق</h1>
-      <p>معرض إيفان للأثاث • دهوك • 2026</p>
+    <div class="brand-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+    <div class="brand-text">
+      <h1>قسم التسويق — Marketing</h1>
+      <p>معرض إيفان للأثاث — دهوك | Ivan Furniture Gallery</p>
     </div>
   </div>
-  <div class="header-badge">
-    <span class="badge badge-e"><i class="fa-solid fa-circle-dot"></i> مدير: مازن داوود</span>
-    <span class="badge badge-g">17 أبريل 2026</span>
+  <div class="hdr-right">
+    <span class="dept-chip">بروتوكول العمل الشامل</span>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="تبديل الثيم">
+      <i class="fa-solid fa-moon" id="themeIcon"></i>
+    </button>
   </div>
 </header>
 
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero">
-  <div class="hero-eyebrow"><i class="fa-solid fa-rocket"></i> دليل التنفيذ الشامل</div>
-  <h2>خطة التسويق <span class="em">الرقمي</span><br>لمعرض إيفان — <span class="gd">دهوك</span></h2>
-  <p class="hero-sub">من توحيد الهوية الرقمية إلى فيديوهات الملايين — كل شيء في مكان واحد، واضح ومرتب، جاهز للتنفيذ من الغد.</p>
-  <div class="hero-cta">
-    <a href="#tasks" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> قائمة المهام</a>
-    <a href="#videos" class="btn btn-outline"><i class="fa-solid fa-video"></i> خطة الفيديوهات</a>
+  <i class="fa-solid fa-satellite-dish hero-floating-icon"></i>
+  <div class="hero-badge"><i class="fa-solid fa-star"></i> قسم التسويق والإعلام</div>
+  <h2>دليل عمل <em>قسم التسويق</em><br>الشامل والنهائي</h2>
+  <p class="hero-sub">من أول لقطة تصوير حتى آخر نشر — كل شيء مكتوب، واضح، وقابل للتطبيق الفوري.<br>الأمانة والصدق أولاً، الهوية الثانية، الأثر الدائم.</p>
+
+  <div class="hero-team">
+    <div class="team-tag tt-mazen">
+      <i class="fa-solid fa-chess-king"></i>
+      <div>
+        <div>مازن — مدير التسويق</div>
+        <div class="tt-ku">مازن — بەڕێوەبەری مارکەتینگ</div>
+      </div>
+    </div>
+    <div class="team-tag tt-ayoub">
+      <i class="fa-solid fa-camera-retro"></i>
+      <div>
+        <div>أيوب — الوجه الإعلاني</div>
+        <div class="tt-ku">ئایووب — مووقعا ڤیدیویێ</div>
+      </div>
+    </div>
+    <div class="team-tag tt-land">
+      <i class="fa-solid fa-film"></i>
+      <div>
+        <div>الند — المونتاج والنشر</div>
+        <div class="tt-ku">ئەلند — مونتاژ و بلاڤکرن</div>
+      </div>
+    </div>
   </div>
+
   <div class="stats-row">
-    <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">فيديو في الشهر الأول</div></div>
-    <div class="stat-item"><div class="stat-num">+100</div><div class="stat-label">تقييم جوجل مستهدف</div></div>
-    <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">روبوت واتساب يرد</div></div>
-    <div class="stat-item"><div class="stat-num">#1</div><div class="stat-label">هدف ظهور جوجل دهوك</div></div>
+    <div class="stat">
+      <span class="stat-n">30+</span>
+      <span class="stat-l">منصة رقمية</span>
+      <span class="stat-ku">پلاتفۆرمێن دیجیتل</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">30s</span>
+      <span class="stat-l">حد أقصى للفيديو</span>
+      <span class="stat-ku">ژیرا فیدیویێ</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">3ث</span>
+      <span class="stat-l">نافذة الـ Hook</span>
+      <span class="stat-ku">ووخرا کشانا بینن</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">+100</span>
+      <span class="stat-l">تقييم/شهر</span>
+      <span class="stat-ku">هەڵسەنگاندن/مانگ</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">#1</span>
+      <span class="stat-l">هدف جوجل دهوك</span>
+      <span class="stat-ku">ئامانجا گووگل دهوک</span>
+    </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-   SECTION 1: TASKS
-══════════════════════════════════ -->
-<div class="sec-head" id="tasks">
-  <div class="sec-tag tag-e"><i class="fa-solid fa-list-check"></i> المرحلة الأولى</div>
-  <h3>قائمة المهام الفورية — اليوم والغد</h3>
-  <p>ابدأ بهذه المهام بالترتيب. لا تتجاوز مهمة قبل إكمال التي قبلها.</p>
-  <div class="divider"></div>
+<!-- ══════════════ NAV BAR ══════════════ -->
+<nav class="nav-bar">
+  <a href="#team" class="nav-link"><i class="fa-solid fa-users"></i> الفريق</a>
+  <a href="#principles" class="nav-link"><i class="fa-solid fa-star"></i> المبادئ</a>
+  <a href="#ayoub" class="nav-link"><i class="fa-solid fa-camera"></i> أيوب</a>
+  <a href="#land" class="nav-link"><i class="fa-solid fa-film"></i> الند</a>
+  <a href="#video" class="nav-link"><i class="fa-solid fa-clapperboard"></i> الفيديو</a>
+  <a href="#old-page" class="nav-link"><i class="fa-solid fa-shop"></i> الصفحة القديمة</a>
+  <a href="#rules" class="nav-link"><i class="fa-solid fa-list-check"></i> المطلوب/الممنوع</a>
+  <a href="#content" class="nav-link"><i class="fa-solid fa-calendar-days"></i> المحتوى</a>
+  <a href="#platforms" class="nav-link"><i class="fa-solid fa-globe"></i> المنصات</a>
+  <a href="#tools" class="nav-link"><i class="fa-solid fa-screwdriver-wrench"></i> الأدوات</a>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════
+   1. TEAM SECTION
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="team">
+  <div class="sh">
+    <div class="sh-icon"><i class="fa-solid fa-users"></i></div>
+    <div class="sh-text">
+      <h3>فريق التسويق — تيم النت</h3>
+      <p>كل شخص له دور محدد وواضح — التداخل في المهام يضيع الوقت ويرهق الجميع</p>
+    </div>
+    <span class="sh-badge">Marketing Team</span>
+  </div>
+
+  <div class="grid grid3">
+
+    <!-- MAZEN -->
+    <div class="person-card card">
+      <div class="card::before"></div>
+      <div class="person-avatar pa-mazen"><i class="fa-solid fa-chess-king"></i></div>
+      <h4>مازن داوود</h4>
+      <span class="role role-mazen">مدير التسويق والتطوير</span>
+      <div class="person-ku">مازن داوود — بەڕێوەبەری مارکەتینگ و پەرەپێدان</div>
+      <ul class="person-duties pd-mazen">
+        <li><strong>الإشراف الكامل</strong> على كل ما يُنشر قبل نزوله
+          <span class="person-ku">چاودێرێ تولێ ل سەر هەر بلاڤکرنێ</span>
+        </li>
+        <li><strong>رصد المنافسين</strong> أسبوعياً وتطبيق الأفضل
+          <span class="person-ku">شوواشتنا ریکپێکان هەفتانە</span>
+        </li>
+        <li><strong>التقارير الشهرية</strong> الشاملة للإدارة
+          <span class="person-ku">ڕاپۆرتێن مانگانە بو بەڕێوەبەریێ</span>
+        </li>
+        <li><strong>ضبط الميزانية</strong> وإيقاف أي هدر مالي
+          <span class="person-ku">ڕاستکرنا بودجەیێ</span>
+        </li>
+        <li><strong>استبيانات السوق</strong> لمعرفة ما يطلبه الزبون
+          <span class="person-ku">لێکۆلینا بازارێ</span>
+        </li>
+        <li><strong>مراجعة وقبول</strong> كل فيديو قبل النشر
+          <span class="person-ku">پێداچووننا فیدیویا پێش بلاڤکرنێ</span>
+        </li>
+        <li><strong>تخطيط استراتيجية</strong> المحتوى الأسبوعية
+          <span class="person-ku">پلانکرنا ستراتیجیا نەرمەکالایێ</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- AYOUB -->
+    <div class="person-card card" style="--delay:.1s">
+      <div class="person-avatar pa-ayoub"><i class="fa-solid fa-camera-retro"></i></div>
+      <h4>أيوب</h4>
+      <span class="role role-ayoub">الوجه الإعلاني — التصوير والظهور</span>
+      <div class="person-ku">ئایووب — مووقعا ڤیدیویێ و دیزاین</div>
+      <ul class="person-duties pd-ayoub">
+        <li><strong>التصوير الاحترافي</strong> للفيديوهات والقطع
+          <span class="person-ku">وێنەگرتنا پیشەیی بو فیدیویان</span>
+        </li>
+        <li><strong>الظهور أمام الكاميرا</strong> بأسلوب مريح وطبيعي
+          <span class="person-ku">دیتنا ل بەرامبەر کامێرایێ</span>
+        </li>
+        <li><strong>التصميم الجرافيكي</strong> للبوستات والهوية البصرية
+          <span class="person-ku">دیزاینا گرافیکیی</span>
+        </li>
+        <li><strong>صفحته الخاصة</strong> — يصور بـ VN بأسلوبه الشخصي
+          <span class="person-ku">لاپەرەیا خۆ — VN بکارئینان</span>
+        </li>
+        <li><strong>ممنوع إشغاله</strong> بالردود أو البيع الميداني
+          <span class="person-ku">قەدەغەیە بکارئینانا وی بو بەرسیڤداننا مسازان</span>
+        </li>
+      </ul>
+      <div class="alert" style="margin-top:16px;">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <p>أيوب متفرغ 100% للإنتاج فقط — أي طلب يُشغله خارج إطار التصوير يُبلّغ به مازن أولاً.</p>
+          <span class="ku" style="font-size:10px;color:var(--muted2);display:block;margin-top:4px;">ئایووب تولێ بو پرودوکشنێ — هەر داخوازیک دەرەوا بچیت بچیتا مازن</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAND -->
+    <div class="person-card card" style="--delay:.2s">
+      <div class="person-avatar pa-land"><i class="fa-solid fa-film"></i></div>
+      <h4>الند</h4>
+      <span class="role role-land">المونتاج وارسال لتلجرام </span>
+      <div class="person-ku">ئەلند — مونتاژ و بلاڤکرن</div>
+      <ul class="person-duties pd-land">
+        <li><strong>مونتاج احترافي</strong> بدون موسيقى صاخبة أو transitions مزعجة
+          <span class="person-ku">مونتاژا پیشەیی بێ مووسیقایێ قایم</span>
+        </li>
+        <li><strong>قطع كل لقطة</strong> لا تضيف قيمة أو تملل المشاهد فوراً
+          <span class="person-ku">برینا هەر کلیبێ نافیدیو دەبیت</span>
+        </li>
+        <li><strong>نشر منظم</strong> — فيديو واحد كل ساعة حداً أقصى
+          <span class="person-ku">بلاڤکrنا ریکتۆکمیلی — یەک فیدیو ل هەر سچتەکێ</span>
+        </li>
+        <li><strong>إضافة النصوص</strong> الكبيرة على كل فيديو (80% بدون صوت)
+          <span class="person-ku">زêدەکrنا دەقا گەورە بو هەر فیدیویکێ</span>
+        </li>
+        <li><strong>تطبيق الـ Hook</strong> في أول 3 ثواني بلا تهاون
+          <span class="person-ku">ئەمالکrنا هووکێ ل سەرەتایێ ۳ چرکان</span>
+        </li>
+        <li><strong>حذف أي لقطة</strong> طويلة أو ممللة بدون رحمة
+          <span class="person-ku">ژێبrنا هەر کلیبێ درێژ یان کانی</span>
+        </li>
+        <li><strong>رفع التقييمات</strong> — نشر محتوى يدفع للتعليق والمشاركة
+          <span class="person-ku">هەلبژارتنا نەرمەکالایا کاری پلاتفۆرمێ</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
 </div>
 
-<div class="grid">
-
-  <!-- Identity -->
-  <div class="card">
-    <div class="card-glow-top"></div>
-    <div class="icon-box icon-e"><i class="fa-solid fa-fingerprint"></i></div>
-    <div class="card-title em">1. توحيد الهوية الرقمية</div>
-    <ul class="c-list">
-      <li>غيّر البايو في كل المنصات للنص: <strong>"معرض إيفان للأثاث — دهوك | Ivan Furniture Gallery"</strong></li>
-      <li>ادخل <strong>Google Business Profile</strong> وأضف: الاسم الكامل، العنوان، الساعات، رقم واتساب، 10 صور جديدة</li>
-      <li>أنشئ حساب <strong>Linktree</strong> (مجاني) وحطّه في بايو كل المنصات</li>
-      <li>روابط Linktree: الكتالوج، الخريطة، واتساب، المبيعات المباشرة</li>
-      <li>فعّل حساب <strong>Snapchat Business</strong> باسم: ivan.furniture.duhok <span class="chip chip-e">جديد</span></li>
-    </ul>
-    <div class="info-box">
-      <h5><i class="fa-solid fa-triangle-exclamation"></i> الأهم والأخطر</h5>
-      <p>اسم "معرض إيفان" يظهر في جوجل كمتحف هولندي. الحل: كتابة "معرض إيفان للأثاث دهوك" في كل مكان بالضبط — يجبر جوجل على فهم هويتك.</p>
+<!-- ══════════════════════════════════════
+   2. PRINCIPLES
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="principles">
+  <div class="sh">
+    <div class="sh-icon"><i class="fa-solid fa-star"></i></div>
+    <div class="sh-text">
+      <h3>المبادئ الذهبية للقسم</h3>
+      <p>أسس ثابتة لا تتغير — الهوية الأخلاقية لمعرض إيفان</p>
     </div>
   </div>
 
-  <!-- QR & Reviews -->
-  <div class="card">
-    <div class="card-glow-top sky"></div>
-    <div class="icon-box icon-s"><i class="fa-solid fa-star"></i></div>
-    <div class="card-title sk">2. أنظمة التقييم والـ QR</div>
-    <ul class="c-list sky">
-      <li>اطبع <strong>50 QR Code</strong> لرابط تقييم جوجل وعلّقه في كل طابق وعند الكاشير</li>
-      <li>ضع QR على كل فاتورة مبيعات مع نص: "قيّم تجربتك — يساعدنا نخدمك أفضل"</li>
-      <li>جهّز رسالة واتساب تُرسل تلقائياً بعد كل بيع أونلاين بـ24 ساعة <span class="chip chip-s">جديد</span></li>
-      <li>اطلب من كل زبون يكتب كلمة <strong>"دهوك"</strong> و<strong>"أثاث"</strong> داخل تقييمه</li>
-      <li>هدف الشهر الأول: <strong>+100 تقييم 5 نجوم حقيقية</strong></li>
-    </ul>
-    <div class="info-box sky">
-      <h5>📩 نص رسالة التقييم</h5>
-      <p>"شرّفتنا بزيارتك 🙏 ممكن دقيقة تقيّمنا على جوجل؟ يساعدنا كثير: [رابط] — معرض إيفان للأثاث دهوك"</p>
+  <div class="prin-grid">
+    <div class="prin">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h4>الأمانة والصدق أولاً</h4>
+      <p>أهم قيمة في معرضنا — الصدق مع الزبون ببيع قطعة جيدة أهم من بيع أي قطعة.</p>
+      <div class="ku-p">دووروستی و ئامانەت پیش هەر شتێ — ئەمە کرەدیا ئاڤانا مە</div>
     </div>
-  </div>
-
-  <!-- Team -->
-  <div class="card card-g">
-    <div class="card-glow-top gold"></div>
-    <div class="icon-box icon-g"><i class="fa-solid fa-users"></i></div>
-    <div class="card-title gd">3. توزيع مهام الفريق</div>
-    <ul class="c-list gold">
-      <li><strong>مازن (أنت):</strong> إشراف + تقارير شهرية + رصد منافسين + ميزانية</li>
-      <li><strong>أيوب:</strong> متفرغ 100% للتصوير والظهور والتصميم فقط — ممنوع الردود</li>
-      <li><strong>الند:</strong> مونتاج + نشر + تطبيق قاعدة "فيديو واحد/ساعة"</li>
-      <li><strong>سرهاد وعلي:</strong> رد خلال 5 دقائق على كل رسالة وتعليق — وكل رد ينتهي بـ"تحب الكتالوج؟"</li>
-    </ul>
-    <div class="info-box gold">
-      <h5>📊 سجّل الاستفسارات</h5>
-      <p>سرهاد وعلي يسجّلان كل استفسار في ملف Excel: نوع القطعة + السعر المطلوب — هذا يغذّي قسم المشتريات.</p>
+    <div class="prin">
+      <i class="fa-solid fa-eye"></i>
+      <h4>الشفافية الصادمة</h4>
+      <p>عرض العيوب قبل المزايا في القطع المستعملة — الزبون الواعي يثق أكثر.</p>
+      <div class="ku-p">ئاشکراکرنا کێشان پێش خاسیان — باوەڕدار</div>
     </div>
-  </div>
-
-  <!-- Publishing Rules -->
-  <div class="card">
-    <div class="card-glow-top"></div>
-    <div class="icon-box icon-e"><i class="fa-solid fa-calendar-check"></i></div>
-    <div class="card-title em">4. قواعد النشر اليومية</div>
-    <ul class="c-list">
-      <li>فيديو واحد كل ساعة كحد أقصى على كل منصة</li>
-      <li>ستوري واحدة مفيدة باليوم فقط — ممنوع الستوريات الفارغة</li>
-      <li><strong>أوقات النشر:</strong> 1:00 ظهراً + 8:00 مساءً (بتوقيت دهوك)</li>
-      <li>كل فيديو تيك توك يتحول: ريلز + YouTube Shorts + ستوري تيزر</li>
-      <li><strong>ممنوع</strong> رفع فيديو فيه Watermark تيك توك على إنستغرام</li>
-      <li>كل وصف فيديو فيه: كنب دهوك، أثاث دهوك، معرض إيفان للأثاث</li>
-    </ul>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════
-   SECTION 2: VIDEO STRATEGY
-══════════════════════════════════ -->
-<div class="sec-head" id="videos">
-  <div class="sec-tag tag-s"><i class="fa-solid fa-video"></i> استراتيجية الفيديو</div>
-  <h3>الفورمولا التي تجيب <span style="color:var(--sky)">مشاهدات</span></h3>
-  <p>كل فيديو ناجح يتبع هيكلاً ثابتاً. طبّقه على كل محتوى تنتجونه.</p>
-  <div class="divider" style="background:linear-gradient(90deg,var(--sky),var(--emerald));"></div>
-</div>
-
-<div class="grid">
-
-  <!-- Formula -->
-  <div class="card" style="grid-column:span 1;">
-    <div class="card-glow-top sky"></div>
-    <div class="icon-box icon-s"><i class="fa-solid fa-clapperboard"></i></div>
-    <div class="card-title sk">هيكل الفيديو الثابت (6-15 ثانية)</div>
-    <div class="vid-formula">
-      <div class="vid-step">
-        <div class="sec">0 – 3 ث</div>
-        <p><strong>HOOK</strong><br>صدمة بصرية + نص كبير. مثال: "غلطة تدمر كنبتك بـ5000$"</p>
-      </div>
-      <div class="vid-step">
-        <div class="sec">3 – 12 ث</div>
-        <p><strong>إثبات القيمة</strong><br>لقطة كل ثانية. خشب، قماش، تفصيل. بدون مقدمة طويلة</p>
-      </div>
-      <div class="vid-step">
-        <div class="sec">12 – 15 ث</div>
-        <p><strong>CTA واضح</strong><br>"اضغط الرابط لتشاهد القطعة في بيتك" — نص على الشاشة</p>
-      </div>
+    <div class="prin">
+      <i class="fa-solid fa-crown"></i>
+      <h4>الهوية قبل الضجيج</h4>
+      <p>بدون موسيقى صاخبة أو transitions مزعجة — نظافة بصرية تعكس راقية المعرض.</p>
+      <div class="ku-p">بێ مووسیقایێ قایم — سافتیا دیتنی یا ئاڤانا مە دیار دکەت</div>
     </div>
-    <ul class="c-list sky" style="margin-top:18px;">
-      <li>80% يشاهدون بدون صوت — النصوص الكبيرة <strong>إلزامية</strong></li>
-      <li>تصوير عمودي 9:16 دائماً بدون استثناء</li>
-      <li>الوجوه البشرية ترفع التفاعل 3 أضعاف</li>
-    </ul>
-  </div>
-
-  <!-- Ayoub question -->
-  <div class="card card-g">
-    <div class="card-glow-top gold"></div>
-    <div class="icon-box icon-g"><i class="fa-solid fa-user-tie"></i></div>
-    <div class="card-title gd">هل أيوب بطل كل الفيديوهات؟</div>
-    <ul class="c-list gold">
-      <li><strong>نعم</strong> — لكن بذكاء وتنويع، مو في كل شيء</li>
-      <li><strong>أيوب في:</strong> قصة قطعة، وراء الكواليس، شرح الجودة، مستشار الديكور</li>
-      <li><strong>ممثل ثاني في:</strong> فيديوهات كوميدية، ترندات تيك توك، POV "لما تشتري كنبة"</li>
-      <li><strong>بدون وجه:</strong> يدين تلمس الخشب + صوت — يشتغل بنفس الكفاءة</li>
-    </ul>
-    <div class="info-box gold">
-      <h5>💡 السبب</h5>
-      <p>أيوب = هوية المعرض. التنويع يمنعه من "الاحتراق" ويحافظ على الفضول.</p>
+    <div class="prin">
+      <i class="fa-solid fa-bullseye"></i>
+      <h4>رسالة واحدة واضحة</h4>
+      <p>كل فيديو يحمل فكرة واحدة فقط — التشعب يُشتت الزبون ويضيع الرسالة.</p>
+      <div class="ku-p">هەر فیدیویکێ یەک پەیامێ — بابەتبووی دکشینیت</div>
     </div>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════
-   7-DAY PLAN
-══════════════════════════════════ -->
-<div class="sec-head">
-  <div class="sec-tag tag-g"><i class="fa-solid fa-calendar-week"></i> الأسبوع الأول</div>
-  <h3>خطة <span style="color:var(--gold)">7 أيام</span> — فيديو بفيديو</h3>
-  <p>تبدأ من الغد. كل يوم فيديو واحد قوي مع فكرة واضحة وهدف محدد.</p>
-  <div class="divider divider-g"></div>
-</div>
-
-<div class="timeline">
-
-  <div class="day-row">
-    <div class="day-num"><div class="day-circle">1</div><div class="day-line"></div></div>
-    <div class="day-body">
-      <div class="day-title">السبت — تحول قبل/بعد</div>
-      <div class="day-sub">Hook: "شوف التحول بـ3 ثواني" | البطل: أيوب</div>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;">ترند صوت + تحوّل غرفة. ينتهي بـ CTA: "أي لون تفضل؟ اكتب بالتعليق"</p>
-      <div class="day-tags">
-        <span class="chip chip-e">ريلز</span><span class="chip chip-s">TikTok</span><span class="chip chip-g">Shorts</span>
-      </div>
+    <div class="prin">
+      <i class="fa-solid fa-clock"></i>
+      <h4>الوقت هو المحتوى</h4>
+      <p>30 ثانية حد أقصى للفيديو الكامل — المشاهد يقرر في الثانية الثالثة.</p>
+      <div class="ku-p">۳۰ چرکه سنووری بالایا فیدیویکێ — بینەر د چرکا ۳ان دا دیار دکەت</div>
     </div>
-  </div>
-
-  <div class="day-row">
-    <div class="day-num"><div class="day-circle">2</div><div class="day-line"></div></div>
-    <div class="day-body">
-      <div class="day-title">الأحد — 3 أخطاء تدمر الخشب</div>
-      <div class="day-sub">Hook: أيوب ماسك خشب مكسور "لا تسوي كذا" | تعليمي</div>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;">CTA: "احفظ الفيديو قبل تشتري" — الحفظ يرفع الخوارزمية</p>
-      <div class="day-tags">
-        <span class="chip chip-e">تعليمي</span><span class="chip chip-g">حفظ</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="day-row">
-    <div class="day-num"><div class="day-circle gold">3</div><div class="day-line" style="background:linear-gradient(var(--gold),transparent);"></div></div>
-    <div class="day-body">
-      <div class="day-title gd">الاثنين — POV كوميدي</div>
-      <div class="day-sub">Hook: "لما خطيبتك تختار الكنبة" | البطل: ممثل ثاني</div>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;">CTA: "منشن خطيبتك" — التاغ يضاعف الوصول</p>
-      <div class="day-tags">
-        <span class="chip chip-r">كوميدي</span><span class="chip chip-s">ترند</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="day-row">
-    <div class="day-num"><div class="day-circle">4</div><div class="day-line"></div></div>
-    <div class="day-body">
-      <div class="day-title">الثلاثاء — قصة قطعة</div>
-      <div class="day-sub">Hook: لقطة منشار "سر القوة هنا" | أيوب + يد نجار</div>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;">10 ثواني من الخشب للمنتج النهائي. CTA: "تبي تشوفها بغرفتك؟ الرابط بالبايو"</p>
-      <div class="day-tags">
-        <span class="chip chip-e">قصة قطعة</span><span class="chip chip-g">جودة</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="day-row">
-    <div class="day-num"><div class="day-circle">5</div><div class="day-line"></div></div>
-    <div class="day-body">
-      <div class="day-title">الأربعاء — سؤال مباشر</div>
-      <div class="day-sub">Hook: أيوب ماسك قطعتين "فرق 5 سنين عمر"</div>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;">"تشتري غالي ولا تركيب رخيص؟" CTA: "صوّت بالستوري"</p>
-      <div class="day-tags">
-        <span class="chip chip-s">تفاعل</span><span class="chip chip-g">استطلاع</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="day-row">
-    <div class="day-num"><div class="day-circle">6</div><div class="day-line"></div></div>
-    <div class="day-body">
-      <div class="day-title">الخميس — وراء الكواليس</div>
-      <div class="day-sub">Hook: Speed Ramp "ركبناها بـ20 ثانية"</div>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;">تركيب سريع + أيوب + عمال. CTA: "تخيلها ببيتك"</p>
-      <div class="day-tags">
-        <span class="chip chip-e">كواليس</span><span class="chip chip-s">ثقة</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="day-row">
-    <div class="day-num"><div class="day-circle gold">7</div></div>
-    <div class="day-body">
-      <div class="day-title gd">الجمعة — تفاعل مجتمعي</div>
-      <div class="day-sub">Hook: "اختر أنت التصميم الجاي"</div>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;">عرض 2 كرسي/كنبة. CTA: "1 أو 2؟ التعليقات تقرر" — يبني مجتمع VIP</p>
-      <div class="day-tags">
-        <span class="chip chip-g">VIP Club</span><span class="chip chip-e">تصويت</span>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════
-   SECTION 3: CHATBOT
-══════════════════════════════════ -->
-<div class="sec-head" id="chatbot">
-  <div class="sec-tag tag-e"><i class="fa-solid fa-robot"></i> الروبوت الذكي</div>
-  <h3>روبوت واتساب — تطبيق <span style="color:var(--emerald2)">عملي خلال 48 ساعة</span></h3>
-  <p>ابدأ بـ ManyChat (مجاني حتى 1000 جهة اتصال) وارتقِ لـ WATI.io عند الحاجة.</p>
-  <div class="divider"></div>
-</div>
-
-<div class="grid">
-
-  <div class="card">
-    <div class="card-glow-top"></div>
-    <div class="icon-box icon-e"><i class="fa-brands fa-whatsapp"></i></div>
-    <div class="card-title em">سيناريو الروبوت — خطوة بخطوة</div>
-    <div class="bot-flow">
-      <div class="bot-msg">
-        <div class="label">🤖 رسالة الترحيب التلقائية</div>
-        أهلاً بيك بمعرض إيفان للأثاث – دهوك 👋<br>اختار رقم:<br>1️⃣ أسعار الكنب<br>2️⃣ مقاسات غرف النوم<br>3️⃣ موقع المعرض على الخريطة<br>4️⃣ أكلم موظف مباشرة
-      </div>
-      <div class="bot-reply">
-        <div class="label">👤 الزبون يختار: 1</div>
-        يختار "أسعار الكنب"
-      </div>
-      <div class="bot-msg">
-        <div class="label">🤖 رد الروبوت</div>
-        [3 صور كنب + السعر تحت كل صورة] + زر: "أبي كتالوج كامل PDF" 📋
-      </div>
-      <div class="bot-reply">
-        <div class="label">👤 الزبون يكتب مقاس: 200x90</div>
-        يبحث عن مقاس محدد
-      </div>
-      <div class="bot-msg">
-        <div class="label">🤖 رد الروبوت</div>
-        متوفر 3 موديلات بهذا المقاس ✅ تحب أرسل لك فيديو لكل موديل؟ نعم / لا
-      </div>
-      <div class="bot-msg">
-        <div class="label">📬 رسالة تلقائية بعد الشراء بـ24 ساعة</div>
-        شرّفتنا 🙏 ممكن دقيقة تقيّمنا على جوجل؟ [رابط] — واسمك يدخل سحب Ivan VIP Club 🎁
-      </div>
-    </div>
-  </div>
-
-  <div class="card card-g">
-    <div class="card-glow-top gold"></div>
-    <div class="icon-box icon-g"><i class="fa-solid fa-tools"></i></div>
-    <div class="card-title gd">الأدوات المطلوبة — مقارنة</div>
-    <div class="table-wrap">
-      <table class="fancy-table gold-t">
-        <tr><th>الأداة</th><th>السعر</th><th>متى تستخدمها</th></tr>
-        <tr>
-          <td class="gd">WhatsApp Business App</td>
-          <td class="sol">مجاني</td>
-          <td>اليوم الأول — ردود سريعة وتنظيم</td>
-        </tr>
-        <tr>
-          <td class="gd">ManyChat</td>
-          <td class="sol">مجاني / 15$</td>
-          <td>أول روبوت بدون كود</td>
-        </tr>
-        <tr>
-          <td class="gd">WATI.io</td>
-          <td>49$/شهر</td>
-          <td>عند تجاوز 1000 زبون</td>
-        </tr>
-        <tr>
-          <td class="gd">Respond.io</td>
-          <td>29$/شهر</td>
-          <td>إدارة متعددة القنوات</td>
-        </tr>
-      </table>
-    </div>
-    <div class="info-box gold" style="margin-top:16px;">
-      <h5>💡 منذ يوليو 2025</h5>
-      <p>رسائل الخدمة على واتساب مجانية تماماً — إذا الزبون بدأ المحادثة، كل الردود مجانية خلال 24 ساعة.</p>
-    </div>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════
-   SECTION 4: COMPETITIONS & LIVE
-══════════════════════════════════ -->
-<div class="sec-head" id="engage">
-  <div class="sec-tag tag-g"><i class="fa-solid fa-trophy"></i> تفاعل وانتشار</div>
-  <h3>مسابقات، بث مباشر، <span style="color:var(--gold)">خصومات، ومجموعات</span></h3>
-  <p>هذه الأدوات تضاعف الوصول وتبني مجتمعاً حول المعرض.</p>
-  <div class="divider divider-g"></div>
-</div>
-
-<div class="grid">
-  <div class="card card-g" style="grid-column:span 1;">
-    <div class="card-glow-top gold"></div>
-    <div class="icon-box icon-g"><i class="fa-solid fa-bullhorn"></i></div>
-    <div class="card-title gd">خطة التفاعل والنشر الشبكي</div>
-    <div class="comp-grid">
-      <div class="comp-card live">
-        <h5><i class="fa-solid fa-circle" style="font-size:10px;"></i> بث مباشر</h5>
-        <ul>
-          <li>بث شهري "يلة نرتب غرفة كاملة"</li>
-          <li>أيوب يستضيف + سؤال مباشر من المشاهدين</li>
-          <li>عرض خاص خلال البث فقط (ساعة محدودة)</li>
-          <li>أفضل وقت: الجمعة 8 مساءً</li>
-        </ul>
-      </div>
-      <div class="comp-card contest">
-        <h5><i class="fa-solid fa-gift"></i> المسابقات</h5>
-        <ul>
-          <li>"تاغ 3 أصدقاء + فولو" — يكسب قطعة صغيرة</li>
-          <li>"شارك صورة غرفتك + هاشتاق المعرض" — يكسب خصم 20%</li>
-          <li>سحب شهري بين من تركوا تقييم 5 نجوم</li>
-          <li>نتائج السحب بالبث المباشر</li>
-        </ul>
-      </div>
-      <div class="comp-card group">
-        <h5><i class="fa-solid fa-users"></i> Ivan VIP Club</h5>
-        <ul>
-          <li>مجموعة واتساب/تيليغرام للأعضاء</li>
-          <li>كتالوج حصري قبل النشر بـ48 ساعة</li>
-          <li>خصم 10% ثابت لأعضاء VIP</li>
-          <li>أول من يعرف وصول قطع جديدة</li>
-        </ul>
-      </div>
-      <div class="comp-card discount">
-        <h5><i class="fa-solid fa-tag"></i> عروض ذكية</h5>
-        <ul>
-          <li>عرض "قطعة اليوم" — 24 ساعة فقط</li>
-          <li>خصم مفاجئ للأوائل الـ10 في التعليقات</li>
-          <li>عرض "وراء الكواليس" — فقط من شاهد الفيديو</li>
-          <li>باقة "جهز غرفتك" — توفير عند شراء 3 قطع</li>
-        </ul>
-      </div>
+    <div class="prin">
+      <i class="fa-solid fa-hand-holding-heart"></i>
+      <h4>نبني اسماً لا صورة</h4>
+      <p>الهدف الدائم بناء سمعة طيبة تدوم سنوات — لا مشاهدات لحظية.</p>
+      <div class="ku-p">ئامانجا مە بیناکrنا ناڤێ باş — نە پەیڤێن بکارئینان</div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-   SECTION 5: TOOLS
-══════════════════════════════════ -->
-<div class="sec-head" id="tools">
-  <div class="sec-tag tag-s"><i class="fa-solid fa-screwdriver-wrench"></i> الأدوات</div>
-  <h3>البرامج المطلوبة — <span style="color:var(--sky)">كل مهمة بأداتها</span></h3>
-  <p>لا تشتري أي أداة مدفوعة قبل تجربة النسخة المجانية.</p>
-  <div class="divider" style="background:linear-gradient(90deg,var(--sky),var(--emerald));"></div>
+<!-- ══════════════════════════════════════
+   3. AYOUB — DETAILED GUIDE
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="ayoub">
+  <div class="sh">
+    <div class="sh-icon" style="background:linear-gradient(135deg,#f97316,#fb923c);box-shadow:0 0 28px rgba(249,115,22,0.2);">
+      <i class="fa-solid fa-camera-retro"></i>
+    </div>
+    <div class="sh-text">
+      <h3 style="color:#f97316;">دليل أيوب — من التصوير للنشر</h3>
+      <p>كل ما يحتاجه أيوب لينتج محتوى محترفاً يمثل إيفان بشكل مثالي</p>
+    </div>
+    <span class="sh-badge" style="border-color:rgba(249,115,22,.3);color:#f97316;background:rgba(249,115,22,.08);">دليل شخصي</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- كيف يظهر -->
+    <div class="card card-gold">
+      <div class="ch ch-gold"><i class="fa-solid fa-person-rays"></i><h4>كيف يظهر أيوب أمام الكاميرا</h4></div>
+      <div class="steps">
+        <div class="step" style="border-color:#f97316;">
+          <div class="step-n gold"><i class="fa-solid fa-face-smile"></i></div>
+          <div class="step-b">
+            <h5>أسلوب مريح وعفوي — لا خطاب رسمي</h5>
+            <p>يتكلم كأنه يحكي لصاحبه — مو كأنه يقرأ خطاباً. العفوية تجلب الثقة.</p>
+            <div class="ku">وەکی دەستەبەرک دئaxwe — nه هەمانه خوێندنا دەرسێ</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:#f97316;">
+          <div class="step-n gold"><i class="fa-solid fa-language"></i></div>
+          <div class="step-b">
+            <h5>الكردية البادينية دائماً — عربي بسيط للترجمة</h5>
+            <p>اللهجة البادينية هي هوية المعرض في دهوك — لا تتكلم بالعربية الفصحى مع الجمهور المحلي.</p>
+            <div class="ku">زمانا کوردی باد<br>ینی — هویتا ئاڤانا مە ل دهوک</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:#f97316;">
+          <div class="step-n gold"><i class="fa-solid fa-hand"></i></div>
+          <div class="step-b">
+            <h5>استخدام اليد لإظهار القطعة</h5>
+            <p>تلمس الخشب، القماش، الزوايا — اليد تعطي المشاهد شعوراً بالجودة أكثر من الكلام.</p>
+            <div class="ku">دەستا بکار بینیت بو ئاشکراکrنا باشیان</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:#f97316;">
+          <div class="step-n gold"><i class="fa-solid fa-microphone"></i></div>
+          <div class="step-b">
+            <h5>صوت واضح بدون صوت خلفي مزعج</h5>
+            <p>لا موسيقى خلفية أثناء كلامه — الصوت الطبيعي للمعرض أقوى من أي موسيقى.</p>
+            <div class="ku">دەنگا ئاشکرا — بێ مووسیقایا ل پشتیا دەنگا وی</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ما يقوله -->
+    <div class="card card-gold">
+      <div class="ch ch-gold"><i class="fa-solid fa-comments"></i><h4>ماذا يقول أيوب — النصوص المعتمدة</h4></div>
+
+      <div class="bub">
+        <span class="bub-badge">فتح الفيديو — HOOK أول 3 ثواني</span>
+        <span class="bub-lbl">باديني</span>
+        <div class="bub-ku">سلاڤ و رێز — ئەز ژ پێشانگەها إيفان وەرن ڤێ پارچێ پێکڤە ببینین.</div>
+        <span class="bub-lbl">عربي</span>
+        <div class="bub-ar">سلام عليكم — تعالوا نشوف هالقطعة معاً.</div>
+        <span class="bub-note bub-ok"><i class="fa-solid fa-check"></i> مباشر + شخصي + دعوة للمشاركة</span>
+      </div>
+
+      <div class="bub">
+        <span class="bub-badge">وصف القطعة — المواصفات بأمانة</span>
+        <span class="bub-lbl">باديني</span>
+        <div class="bub-ku">ڤێ پارچێ ژ چووبا تیپ ئەلفێ — قومەشا __ — ئەندازەیا __. عیبا وێ: __</div>
+        <span class="bub-lbl">عربي</span>
+        <div class="bub-ar">القطعة هذي من خشب [mdf] — القماش [مثلا روسي] — المقاس [مثلا40 سم]. والعيب الوحيد فيها هو: [اذكر العيب بصدق].</div>
+        <span class="bub-note bub-ok"><i class="fa-solid fa-shield-halved"></i> ذكر العيب يبني ثقة أكثر من إخفائه</span>
+      </div>
+
+      <div class="bub">
+        <span class="bub-badge">نهاية الفيديو — CTA واضح</span>
+        <span class="bub-lbl">باديني</span>
+        <div class="bub-ku">ئەگەر د دلێ تە دا بوو — نامەیەکێ بۆ مە بنێرە، یان سەرەدانا مە بکە ل زركا.</div>
+        <span class="bub-lbl">عربي</span>
+        <div class="bub-ar">إذا أعجبتكم — راسلونا على الصفحة، أو تفضلوا بزيارتنا في زركا وإحنا بالخدمة.</div>
+      </div>
+
+    </div>
+
+    <!-- قواعد أيوب -->
+    <div class="card">
+      <div class="ch"><i class="fa-solid fa-check-circle" style="color:var(--ok);"></i><h4>المطلوب من أيوب — 12 قاعدة</h4></div>
+      <div class="lb-hd lb-ok"><i class="fa-solid fa-check-circle"></i> المطلوب</div>
+      <ul class="rl ok-list">
+        <li><strong>الصدق الكامل</strong> في وصف كل قطعة — عيوب + مزايا + ضمان.
+          <span class="ku-note">دووروستی تولێ ل دەمیکa وەسفکrنا هەر پارچەیکێ</span>
+        </li>
+        <li><strong>البدء بـ Hook قوي</strong> — أول 3 ثواني تحدد هل يكمل المشاهد أم لا.
+          <span class="ku-note">سەرەتایا بەهێز — ۳ چرکاتی یا یەکەم</span>
+        </li>
+        <li><strong>لمس القطعة باليد</strong> أثناء الكلام — لإعطاء الزبون الإحساس بالجودة.</li>
+        <li><strong>ذكر المقاس والسعر</strong> في كل فيديو منتج بوضوح.</li>
+        <li><strong>التحدث بالكردية البادينية</strong> بشكل أساسي مع ترجمة عربية مختصرة.</li>
+        <li><strong>الظهور بمظهر لائق</strong> — ملابس نظيفة، خلفية مرتبة.</li>
+        <li><strong>الاهتمام بالإضاءة</strong> — الطبيعية أفضل، لا ظل على وجهه.</li>
+        <li><strong>إنتاج فيديوهات عفوية</strong> قصيرة للصفحة دون تخطيط مسبق.
+          <span class="ku-note">فیدیویێن کورت و سرووشتی بو لاپەرەیا خۆ</span>
+        </li>
+        <li><strong>مراجعة الفيديو</strong> مع الند قبل رفعه للمراجعة النهائية عند مازن.</li>
+        <li><strong>تسليم محتوى الصفحة الخاصة</strong> (VN) مرة على الأقل في الأسبوع.</li>
+        <li><strong>قبول التوجيهات</strong> من مازن بصدر رحب وتطبيقها فوراً.</li>
+        <li><strong>الإبلاغ فوراً</strong> عن أي مشكلة في القطعة أو الموقع أثناء التصوير.</li>
+      </ul>
+    </div>
+
+    <div class="card card-no">
+      <div class="ch ch-no"><i class="fa-solid fa-ban"></i><h4>الممنوع على أيوب — خطوط حمراء</h4></div>
+      <div class="lb-hd lb-no"><i class="fa-solid fa-ban"></i> الممنوع</div>
+      <ul class="rl no-list">
+        <li><strong>إخفاء أي عيب</strong> في القطعة — الصدق هو هويتنا.
+          <span class="ku-note">شاردنا هیچ کێشەیکێ ل پارچەیکێ — دووروستی هویتا مە</span>
+        </li>
+        <li><strong>المبالغة في الوصف</strong> — لا تقول "أحسن قطعة" إلا إذا كانت كذلك حقاً.</li>
+        <li><strong>تصوير الزبائن</strong> بدون إذن صريح منهم.</li>
+        <li><strong>الكلام الزائد</strong> — كل جملة لا تضيف قيمة تُحذف من المونتاج.</li>
+        <li><strong>الحلفان بالله</strong> أو التعبيرات الدينية في سياق البيع.</li>
+        <li><strong>مقارنة المعرض</strong> بالمنافسين سلباً — يُسقط ثقة المشاهد.</li>
+        <li><strong>الرد على رسائل الصفحة</strong> — هذا دور سرهاد وعلي حصراً.</li>
+        <li><strong>النشر المنفرد</strong> على الصفحة الرئيسية بدون إذن مازن.
+          <span class="ku-note">بلاڤکrنا یەک لاپەرەیا سەرەکی بێ مووافەقەتا مازن</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
 </div>
 
-<div class="grid">
-  <div class="card" style="grid-column:span 1;">
-    <div class="card-glow-top sky"></div>
-    <div class="icon-box icon-s"><i class="fa-solid fa-table"></i></div>
-    <div class="card-title sk">جدول الأدوات الكامل</div>
-    <div class="table-wrap">
-      <table class="fancy-table">
-        <tr><th>المهمة</th><th>الأداة</th><th>السعر</th><th>الأولوية</th></tr>
-        <tr>
-          <td>مونتاج ريلز</td><td class="sol">CapCut</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-r">فوري</span></td>
-        </tr>
-        <tr>
-          <td>تصميم بوستات</td><td class="sol">Canva</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-r">فوري</span></td>
-        </tr>
-        <tr>
-          <td>رابط موحد</td><td class="sol">Linktree</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-r">اليوم</span></td>
-        </tr>
-        <tr>
-          <td>روبوت واتساب</td><td class="sol">ManyChat</td><td>مجاني/15$</td>
-          <td><span class="chip chip-e">48 ساعة</span></td>
-        </tr>
-        <tr>
-          <td>جدولة النشر</td><td class="sol">Meta Business Suite</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-e">أسبوع 1</span></td>
-        </tr>
-        <tr>
-          <td>تقييم وتحليل</td><td class="sol">Metricool</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-e">أسبوع 1</span></td>
-        </tr>
-        <tr>
-          <td>معرض 3D</td><td class="gd">Matterport / Kuula.co</td><td>50-100$/شهر</td>
-          <td><span class="chip chip-g">شهر 2-3</span></td>
-        </tr>
-        <tr>
-          <td>فلتر AR</td><td class="gd">Meta Spark AR Studio</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-g">شهر 2-3</span></td>
-        </tr>
-        <tr>
-          <td>مستشار ديكور AI</td><td class="gd">RoomGPT + ChatGPT</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-g">شهر 2</span></td>
-        </tr>
-        <tr>
-          <td>نمذجة 3D</td><td>Blender / SketchUp</td><td class="sol">مجاني</td>
-          <td><span class="chip chip-s">شهر 3</span></td>
-        </tr>
-      </table>
+<!-- ══════════════════════════════════════
+   4. LAND — MONTAGE GUIDE
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="land">
+  <div class="sh">
+    <div class="sh-icon" style="background:linear-gradient(135deg,var(--sky),#0284c7);box-shadow:0 0 28px rgba(6,182,212,0.2);">
+      <i class="fa-solid fa-film"></i>
+    </div>
+    <div class="sh-text">
+      <h3 style="color:var(--sky);">دليل الند — المونتاج والنشر</h3>
+      <p>كل لقطة مسؤولية — الند هو الفلتر الأخير قبل وصول المحتوى للجمهور</p>
+    </div>
+    <span class="sh-badge" style="border-color:rgba(6,182,212,.3);color:var(--sky);background:rgba(6,182,212,.08);">Production Guide</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="card card-sky">
+      <div class="ch ch-sky"><i class="fa-solid fa-scissors"></i><h4>قواعد المونتاج الثابتة</h4></div>
+      <div class="steps">
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky">1</div>
+          <div class="step-b">
+            <h5>لا موسيقى خلفية في فيديوهات القطع</h5>
+            <p>الصوت الطبيعي + صوت أيوب فقط. الموسيقى تشتت الانتباه عن المنتج.</p>
+            <div class="ku">بێ مووسیقایا پشتبەستیێ ل فیدیویێن پارچان — دەنگا سرووشتی</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky">2</div>
+          <div class="step-b">
+            <h5>احذف كل لقطة لا تضيف قيمة</h5>
+            <p>إذا شاهدت لقطة وفكرت "يمكن نحذفها" — احذفها. لا تتردد.</p>
+            <div class="ku">هەر کلیبێ نەفیدیو دکەت بژێبرێ — بێ تراددو</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky">3</div>
+          <div class="step-b">
+            <h5>نصوص كبيرة وواضحة على الشاشة</h5>
+            <p>80% من المشاهدين يشاهدون بدون صوت — النص هو صوتهم البديل.</p>
+            <div class="ku">%۸۰ بێ دەنگ تامادیئêt — دەقا گەورە دەنگا وان</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky">4</div>
+          <div class="step-b">
+            <h5>Hook في أول 3 ثواني بلا تهاون</h5>
+            <p>لا مقدمة، لا موسيقى افتتاحية، لا شعار طويل — مباشرة للقطعة والكلام.</p>
+            <div class="ku">بێ پیشگوتن — ڕاستەڤ بچە بو پارچەیێ و پeyamê</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky">5</div>
+          <div class="step-b">
+            <h5>تصوير عمودي 9:16 دائماً</h5>
+            <p>Reels + TikTok + Shorts — كلها عمودية. لا أفقي إلا للإعلانات المدفوعة.</p>
+            <div class="ku">عمودی ۹:۱۶ دایمی — Reels و TikTok و Shorts</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky">6</div>
+          <div class="step-b">
+            <h5>لا Watermark TikTok على Reels</h5>
+            <p>إنستغرام يعاقب الفيديو بعلامة TikTok — احذفها دائماً قبل النشر.</p>
+            <div class="ku">واتەرمارکا تیکتۆک ژbرêve bike — Instagram seza dide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-sky">
+      <div class="ch ch-sky"><i class="fa-solid fa-calendar-check"></i><h4>بروتوكول النشر اليومي</h4></div>
+      <div class="steps">
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky"><i class="fa-solid fa-clock"></i></div>
+          <div class="step-b">
+            <h5>فيديو واحد كل ساعة — لا أكثر</h5>
+            <p>النشر الزائد يؤدي لإلغاء المتابعة. الجودة تهزم الكمية دائماً.</p>
+            <div class="ku">یەک فیدیو ل هەر سچتەکێ — زیاتر دبە پەیڤدارێن مە کم دبن</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky"><i class="fa-solid fa-sun"></i></div>
+          <div class="step-b">
+            <h5>أوقات النشر المثلى</h5>
+            <p>الظهيرة 1:00 PM + المساء 8:00 PM بتوقيت دهوك — هذا ذروة نشاط الجمهور.</p>
+            <div class="ku">نیوروو ۱ + ئێوارا ۸ — ووختا جەمهووریا مە چالاکترین</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky"><i class="fa-brands fa-instagram"></i></div>
+          <div class="step-b">
+            <h5>توزيع كل فيديو على كل المنصات</h5>
+            <p>TikTok + Reels + YouTube Shorts + Story (تيزر 5 ثواني) — فيديو واحد، 4 منصات.</p>
+            <div class="ku">یەک فیدیو — ۴ پلاتفۆرم</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--sky);">
+          <div class="step-n sky"><i class="fa-solid fa-hashtag"></i></div>
+          <div class="step-b">
+            <h5>الـ Caption + الهاشتاغ + الموقع</h5>
+            <p>كل فيديو فيه كلمات: مثلا قنفات دهوك / أثاث دهوك / معرض إيفان + موقع جغرافي.</p>
+            <div class="ku">قنفات دهوک + أثاث دهوک + معرض إيفان + جغرافی</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="golden">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h5>قاعدة الند الذهبية</h5>
+        <p>كل لقطة تسألها: "هل تضيف هذه اللقطة شيئاً للمشاهد؟" إذا كان الجواب لا — احذفها بلا تردد.</p>
+        <div class="ku">هەر کلیبی: "ئایا ئەمە زیاد دکit بو بینەر؟" ئەگەر نە — بژêبرê</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   5. VIDEO FORMULA
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="video">
+  <div class="sh">
+    <div class="sh-icon"><i class="fa-solid fa-clapperboard"></i></div>
+    <div class="sh-text">
+      <h3>فورمولا الفيديو — من البداية للنهاية</h3>
+      <p>معيار ذهبي لكل فيديو ينتجه القسم — لا استثناء</p>
+    </div>
+    <span class="sh-badge">Video Formula</span>
+  </div>
+
+  <div class="grid">
+    <div class="card full">
+      <div class="ch"><i class="fa-solid fa-film"></i><h4>الهيكل الثابت لكل فيديو (حد أقصى 30 ثانية)</h4></div>
+      <div class="vid-timeline">
+
+        <div class="vid-step vs-hook">
+          <div class="vs-dot vsd-hook">0-3ث</div>
+          <div class="vs-content">
+            <div class="vs-time">0 — 3 ثواني | HOOK الصدمة</div>
+            <h5>اجذب المشاهد قبل أن يتمكن من التمرير</h5>
+            <p>مشهد قريب جداً (Close-up) على تفصيل مدهش في القطعة + نص كبير على الشاشة + صوت أيوب يبدأ مباشرة.</p>
+            <div class="example">مثال: "شوف شو الفرق بين خشب أصلي ومقلد — 3 ثواني"</div>
+            <div class="ku" style="font-size:11px;color:var(--muted2);margin-top:6px;">نزیکترین ووێنە + دەق گەورە + دەنگا ئایووب ڕاستەڤ</div>
+          </div>
+        </div>
+
+        <div class="vid-step vs-value">
+          <div class="vs-dot vsd-value">3-25ث</div>
+          <div class="vs-content">
+            <div class="vs-time">3 — 25 ثانية | القيمة والمعلومة</div>
+            <h5>أثبت الجودة + اذكر العيب + المقاس + السعر</h5>
+            <p>لقطات سريعة (لقطة كل 1-2 ثانية) — خشب، قماش، زوايا، تفاصيل. أيوب يشرح بصدق شامل: الخامة، المقاس، الحالة، الضمان، وأي عيب.</p>
+            <div class="example">لا مقدمات طويلة. لا موسيقى. لقطات سريعة + كلام مباشر.</div>
+            <div class="ku" style="font-size:11px;color:var(--muted2);margin-top:6px;">ووێنایێن خێرایی + ئایووب ل سەر کالیتی و کێشەکان</div>
+          </div>
+        </div>
+
+        <div class="vid-step vs-cta">
+          <div class="vs-dot vsd-cta">25-30ث</div>
+          <div class="vs-content">
+            <div class="vs-time">25 — 30 ثانية | CTA واضح</div>
+            <h5>دعوة واحدة واضحة فقط — لا أكثر</h5>
+            <p>نص كبير على الشاشة + صوت أيوب يوجّه للتواصل. رابط في البايو. لا تنهِ الفيديو بلا دعوة.</p>
+            <div class="example">"راسلونا على الصفحة أو زوروا المعرض في زركا"</div>
+            <div class="ku" style="font-size:11px;color:var(--muted2);margin-top:6px;">یەک CTA ئاشکرا — دەق گەورە + دەنگا ئایووب</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="alert">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <div>
+          <p>أي فيديو يتجاوز 30 ثانية يُعاد تحريره أو يُحذف. القاعدة ليست اقتراحاً — هي معيار ثابت.</p>
+          <span class="ku" style="font-size:10.5px;color:var(--muted2);display:block;margin-top:4px;">هەر فیدیویکێ ژ ۳۰ چرکان زیادتر بچیت، دوبارە ئاراست دبیت</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-   SECTION 6: ERRORS TABLE
-══════════════════════════════════ -->
-<div class="sec-head">
-  <div class="sec-tag tag-r"><i class="fa-solid fa-triangle-exclamation"></i> الأخطاء والحلول</div>
-  <h3>جدول <span style="color:var(--coral)">المشاكل</span> والحلول الفورية</h3>
-  <div class="divider" style="background:linear-gradient(90deg,var(--coral),var(--gold));"></div>
-</div>
+<!-- ══════════════════════════════════════
+   6. OLD PAGE — الصفحة القديمة
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="old-page">
+  <div class="sh">
+    <div class="sh-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 0 28px rgba(245,158,11,0.2);">
+      <i class="fa-solid fa-shop"></i>
+    </div>
+    <div class="sh-text">
+      <h3 style="color:var(--gold);">الصفحة القديمة — 3 قواعد لا تتغير</h3>
+      <p>الصفحة القديمة لها طابع خاص — الأمانة المطلقة هي هويتها</p>
+    </div>
+    <span class="sh-badge" style="border-color:rgba(245,158,11,.3);color:var(--gold);background:rgba(245,158,11,.08);">قطع مستعملة</span>
+  </div>
 
-<div class="grid">
-  <div class="card card-r" style="grid-column:span 1;">
-    <div class="card-glow-top coral"></div>
-    <div class="icon-box icon-r"><i class="fa-solid fa-wrench"></i></div>
-    <div class="card-title cr">كل مشكلة بحلها</div>
-    <div class="table-wrap">
-      <table class="fancy-table">
-        <tr><th>المشكلة</th><th>الحل الفوري</th></tr>
-        <tr><td class="err">اسم المعرض يظهر كمتحف هولندي في جوجل</td><td class="sol">اكتب "معرض إيفان للأثاث دهوك" في كل البايوات والأوصاف</td></tr>
-        <tr><td class="err">نشر صور عادية بدون فكرة</td><td class="sol">فيديو قصير بـ Hook قوي في أول 3 ثواني</td></tr>
-        <tr><td class="err">لا يوجد طلب تقييمات</td><td class="sol">طلب تقييم فوري بعد كل بيع + QR بكل طابق</td></tr>
-        <tr><td class="err">غياب الـ CTA في المحتوى</td><td class="sol">جملة توجيهية واضحة في نهاية كل فيديو وبوست</td></tr>
-        <tr><td class="err">محتوى TikTok بطيء</td><td class="sol">إيقاع أسرع + نصوص مباشرة على الفيديو</td></tr>
-        <tr><td class="err">صور خرائط جوجل قديمة</td><td class="sol">رفع 10 صور جديدة عالية الجودة اليوم</td></tr>
-        <tr><td class="err">روابط متفرقة في البايو</td><td class="sol">Linktree واحد يجمع كل الروابط</td></tr>
-        <tr><td class="err">لا يوجد عرض للسعر</td><td class="sol">السعر ظاهر وواضح في كل بوست منتج</td></tr>
-        <tr><td class="err">40% من الشباب يبحثون بالسوشال</td><td class="sol">الهاشتاغ والموقع داخل كل فيديو</td></tr>
-        <tr><td class="err">لا رد على تعليقات قديمة</td><td class="sol">يوم واحد لمسح وتنظيف كل المنصات</td></tr>
-      </table>
+  <div class="grid grid3">
+
+    <div class="card card-gold">
+      <div class="ch ch-gold"><i class="fa-solid fa-magnifying-glass"></i><h4>القاعدة 1 — توضيح كل العيوب</h4></div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:16px;">كل عيب في القطعة يُذكر بوضوح ودون مواربة — خدش، ترقيع، بقعة، كسر، تغيير لون. الزبون يراها عند التسليم فإذا فوجئ فلن يثق بنا مرة ثانية.</p>
+      <div class="bub" style="border-color:var(--gold);">
+        <span class="bub-badge" style="background:rgba(245,158,11,.15);color:var(--gold);">مثال الرد المعتمد</span>
+        <span class="bub-lbl">باديني</span>
+        <div class="bub-ku">ڤێ پارچێ عیبا وێ __ یە — ل وێ شوێنێ — ئاشکرا دکم ئینجا</div>
+        <span class="bub-lbl">عربي</span>
+        <div class="bub-ar">القطعة هذي فيها عيب في [المكان] — شوفوه وشةفو مواصفاتها وعيوبها  .</div>
+      </div>
+      <div class="golden">
+        <i class="fa-solid fa-shield-halved"></i>
+        <p>الزبون الذي يعرف العيب ويشتري = زبون راضٍ وواعٍ. الزبون الذي يفاجأ بالعيب = خسارة دائمة.</p>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div class="ch ch-gold"><i class="fa-solid fa-info-circle"></i><h4>القاعدة 2 — شرح القطعة كاملاً</h4></div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:16px;">في كل فيديو للصفحة القديمة يجب ذكر: نوع الخشب، نوع القماش أو الطلاء، المقاسات الدقيقة، اللون الحقيقي (لا الفلاتر)، وحالة القطعة العامة.</p>
+      <div class="steps">
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">1</div>
+          <div class="step-b"><h5>نوع الخشب / الهيكل</h5><p>خشب صلب أم MDF أم معدن؟ — قل الحقيقة مهما كانت.</p></div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">2</div>
+          <div class="step-b"><h5>نوع القماش / الطلاء</h5><p>إسبونج، قماش، جلد طبيعي أم صناعي؟ — أسماء دقيقة.</p></div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">3</div>
+          <div class="step-b"><h5>المقاسات الدقيقة</h5><p>طول × عرض × ارتفاع بالسنتيمتر — لا تخمين.</p></div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">4</div>
+          <div class="step-b"><h5>الحالة العامة</h5><p>ممتاز / جيد جداً / جيد مع عيوب — بصدق.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div class="ch ch-gold"><i class="fa-solid fa-file-contract"></i><h4>القاعدة 3 — الضمان والمدة</h4></div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:16px;">إذا توفر ضمان على القطعة — اذكره بوضوح. إذا لا يوجد — قل ذلك صراحة. لا تَعِد بضمان لا تملكه.</p>
+      <div class="bub" style="border-color:var(--gold);">
+        <span class="bub-badge" style="background:rgba(245,158,11,.15);color:var(--gold);">عند وجود ضمان</span>
+        <div class="bub-ar">القطعة فيها ضمان [المدة] على [ماذا] — يتم بالفاتورة الرسمية من المعرض.</div>
+      </div>
+      <div class="bub" style="border-color:rgba(239,68,68,.4);">
+        <span class="bub-badge" style="background:rgba(239,68,68,.15);color:var(--no);">عند عدم وجود ضمان</span>
+        <div class="bub-ar">هالقطعة مستعملة وبدون ضمان — لكن الحالة كذا وكذا وسعرها عادل لهالحالة.</div>
+      </div>
+      <div class="golden">
+        <i class="fa-solid fa-handshake"></i>
+        <p>فيديو قصير + صادق + عفوي يبيع أكثر من فيديو طويل ومزخرف — المشاهد يشعر بالأصالة.</p>
+        <div class="ku">فیدیویكا کورت + دووروست بیو بکe — بینەر سرووشتیتیiê hêss دkêt</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card full" style="margin-top:22px;">
+    <div class="ch"><i class="fa-solid fa-video" style="color:var(--gold);"></i><h4>الفيديوهات العفوية للصفحة — محتوى يجلب مشاهدات</h4></div>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.8;">إلى جانب الفيديوهات المُعدّة مسبقاً، تُنتَج فيديوهات عفوية قصيرة (10-15 ثانية) بشكل تلقائي وطبيعي دون سيناريو:</p>
+    <div class="grid grid3" style="margin:0;">
+      <div class="card-gold" style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:14px;padding:16px;">
+        <i class="fa-solid fa-box-open" style="color:var(--gold);font-size:1.4em;margin-bottom:8px;display:block;"></i>
+        <h5 style="font-size:13px;font-weight:900;margin-bottom:5px;">لحظة استلام قطعة جديدة</h5>
+        <p style="font-size:12px;color:var(--muted);">أيوب يفتح الصندوق بشكل عفوي ويكشف القطعة للمرة الأولى — الإثارة الحقيقية تُشعل التفاعل.</p>
+      </div>
+      <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:14px;padding:16px;">
+        <i class="fa-solid fa-magnifying-glass" style="color:var(--gold);font-size:1.4em;margin-bottom:8px;display:block;"></i>
+        <h5 style="font-size:13px;font-weight:900;margin-bottom:5px;">قبل/بعد التنظيف أو الإصلاح</h5>
+        <p style="font-size:12px;color:var(--muted);">قطعة تحتاج تنظيفاً أو إصلاحاً بسيطاً — التحول يجلب مشاهدات عالية.</p>
+      </div>
+      <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:14px;padding:16px;">
+        <i class="fa-solid fa-hand-pointer" style="color:var(--gold);font-size:1.4em;margin-bottom:8px;display:block;"></i>
+        <h5 style="font-size:13px;font-weight:900;margin-bottom:5px;">اختبار الجودة العفوي</h5>
+        <p style="font-size:12px;color:var(--muted);">أيوب يضغط على الإسفنج، يدق الخشب، يسحب الدرج — الجودة تظهر بنفسها.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-   STRIP — Morning Checklist
-══════════════════════════════════ -->
-<div class="strip" id="morning">
-  <div class="strip-inner">
-    <div>
-      <div class="sec-tag tag-e" style="margin-bottom:14px;display:inline-flex;"><i class="fa-solid fa-sun"></i> صباح الغد</div>
-      <h3>Checklist الغد<br><span style="color:var(--emerald2)">بالترتيب الدقيق</span></h3>
-      <p style="margin-top:14px;">اتبع هذا الترتيب بالضبط. لا تتخطى خطوة.</p>
+<!-- ══════════════════════════════════════
+   7. RULES — REQUIRED & FORBIDDEN
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="rules">
+  <div class="sh">
+    <div class="sh-icon"><i class="fa-solid fa-list-check"></i></div>
+    <div class="sh-text">
+      <h3>المطلوب والممنوع — للقسم كاملاً</h3>
+      <p>قواعد ثابتة تسري على جميع أفراد قسم التسويق</p>
     </div>
-    <div>
-      <ul class="checklist">
-        <li><span class="check-time">9:00 ص</span> غيّر كل البايوات + ارفع 10 صور على جوجل + بوست جوجل Business</li>
-        <li><span class="check-time">10:00 ص</span> اطبع QR التقييم وعلّقه في المعرض</li>
-        <li><span class="check-time">11:00 ص</span> اجتماع 15 دقيقة مع أيوب والند — اشرح قاعدة الـ3 ثواني + سلّمهم جدول الأسبوع</li>
-        <li><span class="check-time">12:00 ظ</span> أيوب يصور فيديو "التحول قبل/بعد" — 11 ثانية فقط</li>
-        <li><span class="check-time">1:00 ظ</span> الند يمنتجه ويضيف Hook + نص + صوت ترند + CTA</li>
-        <li><span class="check-time">2:00 ظ</span> انشر الفيديو على تيك توك + ريلز + Shorts بنفس الوقت</li>
-        <li><span class="check-time">3:00 ظ</span> سرهاد يرد على أول 10 تعليقات: "نورتنا، تحب الكتالوج؟"</li>
-        <li><span class="check-time">4:00 ظ</span> فعّل ManyChat وجرّب السيناريو على رقمك الشخصي</li>
-        <li><span class="check-time">8:00 م</span> ستوري استبيان: "أكثر 3 قطع تبي تشوفها الشهر الجاي؟"</li>
+  </div>
+
+  <div class="grid">
+    <div class="card card-ok">
+      <div class="lb-hd lb-ok"><i class="fa-solid fa-check-circle"></i> المطلوب — 15 مهمة أساسية</div>
+      <ul class="rl ok-list">
+        <li><strong>نشر محتوى يومي</strong> يجذب في أول 3 ثواني — لا مقدمات فارغة.
+          <span class="ku-note">بلاڤکrنا nêrmalêyî هەر روژ — بلێ پیشگوتنا خالی</span>
+        </li>
+        <li><strong>الاسم الكامل "معرض إيفان للأثاث — دهوك"</strong> في كل بايو ووصف.</li>
+        <li><strong>رفع صور جديدة</strong> عالية الجودة على خرائط جوجل أسبوعياً.</li>
+        <li><strong>الرد على كل تعليق</strong> خلال 5 دقائق — الصمت = خسارة زبون.</li>
+        <li><strong>CTA واضح</strong> في نهاية كل فيديو وبوست بلا استثناء.</li>
+        <li><strong>جدولة المحتوى</strong> أسبوع مقدم على الأقل — لا ارتجال يومي.</li>
+        <li><strong>رسالة تقييم</strong> لكل زبون يشتري خلال 24 ساعة.</li>
+        <li><strong>ذكر المقاس والسعر والخامة</strong> في كل فيديو منتج.</li>
+        <li><strong>تحديث Linktree</strong> الموحد دورياً في بايو كل المنصات.</li>
+        <li><strong>تقرير شهري</strong>: مشاهدات + تقييمات + رسائل + مبيعات أونلاين.</li>
+        <li><strong>بوست جوجل بيزنس</strong> مرة كل 3 أيام على الأقل.</li>
+        <li><strong>رصد المنافسين</strong> أسبوعياً وتطبيق الأفضل فوراً.</li>
+        <li><strong>الهوية البصرية الموحدة</strong> — كل قطعة تُنشر بقالب إيفان الثابت.</li>
+        <li><strong>الهاشتاغ والموقع الجغرافي</strong> في كل فيديو ونشرة.</li>
+        <li><strong>التنسيق مع مازن</strong> قبل أي قرار تسويقي خارج الروتين.</li>
+      </ul>
+    </div>
+
+    <div class="card card-no">
+      <div class="lb-hd lb-no"><i class="fa-solid fa-ban"></i> الممنوع — 15 خطاً أحمر</div>
+      <ul class="rl no-list">
+        <li><strong>نشر أكثر من فيديو في الساعة</strong> — يُزعج المتابعين ويسبب إلغاء المتابعة.
+          <span class="ku-note">بلاڤکrنا ژ یەک فیدیوتر ل سچتەکێ — پەیڤدارێن مە کم دبن</span>
+        </li>
+        <li><strong>نشر بدون هوية بصرية</strong> — أي قطعة بدون قالب إيفان تُحذف وتُعاد.</li>
+        <li><strong>رفع فيديو TikTok علامة مائية</strong> على إنستغرام — الخوارزمية تعاقب.</li>
+        <li><strong>تجاهل التعليقات السلبية</strong> — كل شكوى فرصة للثقة.</li>
+        <li><strong>نسخ محتوى المنافسين</strong> أو ادعاء أي شيء غير حقيقي.</li>
+        <li><strong>نشر أسعار خاطئة</strong> أو عروض منتهية.</li>
+        <li><strong>الموسيقى الصاخبة</strong> أو transitions المبالغ فيها.</li>
+        <li><strong>تصوير الزبائن</strong> بدون إذن صريح.</li>
+        <li><strong>إخفاء عيوب القطع المستعملة</strong> — صفر تسامح.</li>
+        <li><strong>مقارنة المعرض بالمنافسين</strong> سلباً في أي منشور.</li>
+        <li><strong>النشر بدون هاشتاغ</strong> أو موقع جغرافي.</li>
+        <li><strong>فيديو بمقدمة أطول من 3 ثواني</strong> — يُعاد مونتاجه.</li>
+        <li><strong>نشر فيديو أطول من 30 ثانية</strong> على الحسابات الرئيسية.</li>
+        <li><strong>الكلام الزائد</strong> بدون قيمة — يُحذف من المونتاج.</li>
+        <li><strong>ارتجال التسويق</strong> بدون تنسيق — كل قرار كبير يمر على مازن.</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-   FUTURE TECH
-══════════════════════════════════ -->
-<div class="sec-head">
-  <div class="sec-tag tag-g"><i class="fa-solid fa-rocket"></i> خلال 3 أشهر</div>
-  <h3>الإضافات التقنية <span style="color:var(--gold)">المستقبلية</span></h3>
-  <div class="divider divider-g"></div>
+<!-- ══════════════════════════════════════
+   8. CONTENT STRATEGY 70-20-10
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="content">
+  <div class="sh">
+    <div class="sh-icon"><i class="fa-solid fa-chart-pie"></i></div>
+    <div class="sh-text">
+      <h3>استراتيجية المحتوى — 70 · 20 · 10</h3>
+      <p>توزيع ذهبي مثبت علمياً يبني جمهوراً ويحوّله لزبائن</p>
+    </div>
+  </div>
+
+  <div class="rule-bar-wrap card vis" style="margin-bottom:28px;">
+    <div class="rb-title">قاعدة المحتوى الذهبية — <em>70 · 20 · 10</em></div>
+    <div class="rule-bar">
+      <div class="seg s70">70%</div>
+      <div class="seg s20">20%</div>
+      <div class="seg s10">10%</div>
+    </div>
+    <div class="rb-desc">
+      <div class="rb-item">
+        <h4>تعليمي — 70%</h4>
+        <p>كيف تختار، كيف تقيس، نصائح الديكور، مقارنة المواد، أسرار النجارة.</p>
+      </div>
+      <div class="rb-item">
+        <h4>عرض احترافي — 20%</h4>
+        <p>تصوير القطع بإضاءة احترافية مع كل مواصفاتها وسعرها بوضوح.</p>
+      </div>
+      <div class="rb-item">
+        <h4>بيع مباشر — 10%</h4>
+        <p>عروض محدودة الوقت، CTA مباشر، أسعار وخصومات واضحة.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY PLAN -->
+  <div class="card full">
+    <div class="ch"><i class="fa-solid fa-calendar-week"></i><h4>خطة المحتوى الأسبوعية — 7 أيام</h4></div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr>
+          <th>اليوم</th>
+          <th>النوع</th>
+          <th>الفكرة</th>
+          <th>البطل</th>
+          <th>CTA</th>
+        </tr>
+        <tr>
+          <td><strong>السبت</strong></td>
+          <td><span class="chip c-p">تعليمي</span></td>
+          <td>قبل/بعد — تحوّل قطعة (Transformation)</td>
+          <td>أيوب</td>
+          <td>"أي لون تفضل؟ اكتب بالتعليق"</td>
+        </tr>
+        <tr>
+          <td><strong>الأحد</strong></td>
+          <td><span class="chip c-p">تعليمي</span></td>
+          <td>3 أخطاء شائعة عند اختيار الكنبة</td>
+          <td>أيوب</td>
+          <td>"احفظ الفيديو قبل تشتري"</td>
+        </tr>
+        <tr>
+          <td><strong>الاثنين</strong></td>
+          <td><span class="chip c-sky">ترند</span></td>
+          <td>POV كوميدي — لما تختار الأثاث</td>
+          <td>ممثل ثانٍ</td>
+          <td>"منشن شخص تبي تشتري معه"</td>
+        </tr>
+        <tr>
+          <td><strong>الثلاثاء</strong></td>
+          <td><span class="chip c-gold">قصة قطعة</span></td>
+          <td>من الخشب للمنتج النهائي — 20 ثانية</td>
+          <td>أيوب + نجار</td>
+          <td>"تبي تشوفها في بيتك؟ الرابط بالبايو"</td>
+        </tr>
+        <tr>
+          <td><strong>الأربعاء</strong></td>
+          <td><span class="chip c-p">تعليمي</span></td>
+          <td>كيف تفرق بين خشب أصلي ومقلد</td>
+          <td>أيوب</td>
+          <td>"صوّت بالستوري — أيهما أفضل؟"</td>
+        </tr>
+        <tr>
+          <td><strong>الخميس</strong></td>
+          <td><span class="chip c-g">عرض</span></td>
+          <td>وراء الكواليس — تركيب قطعة</td>
+          <td>أيوب + عمال</td>
+          <td>"تخيلها في بيتك"</td>
+        </tr>
+        <tr>
+          <td><strong>الجمعة</strong></td>
+          <td><span class="chip c-sky">تفاعل</span></td>
+          <td>"اختر أنت التصميم الجاي"</td>
+          <td>أيوب</td>
+          <td>"1 أو 2؟ التعليقات تقرر"</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
-<div class="grid grid-3">
-
-  <div class="card card-g">
-    <div class="card-glow-top gold"></div>
-    <div class="icon-box icon-g"><i class="fa-solid fa-cube"></i></div>
-    <div class="card-title gd">معرض ثلاثي الأبعاد (3D)</div>
-    <ul class="c-list gold rocket">
-      <li>استخدم <strong>Kuula.co</strong> أو Matterport للجولة الافتراضية الكاملة</li>
-      <li>كاميرا 360° (Insta360) — يمكن استئجارها</li>
-      <li>الرابط يُضمّن في الموقع والبايو</li>
-      <li>الزبون يتجول في المعرض من بيته قبل الزيارة</li>
-    </ul>
+<!-- ══════════════════════════════════════
+   9. PLATFORMS
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="platforms">
+  <div class="sh">
+    <div class="sh-icon"><i class="fa-solid fa-globe"></i></div>
+    <div class="sh-text">
+      <h3>المنصات الرقمية — كيف نتعامل مع كل منصة</h3>
+      <p>لكل منصة شخصية مختلفة وجمهور مختلف</p>
+    </div>
   </div>
 
-  <div class="card card-s">
-    <div class="card-glow-top sky"></div>
-    <div class="icon-box icon-s"><i class="fa-solid fa-vr-cardboard"></i></div>
-    <div class="card-title sk">فلتر الواقع المعزز (AR)</div>
-    <ul class="c-list sky rocket">
-      <li>أداة <strong>Meta Spark AR Studio</strong> — مجانية</li>
-      <li>الزبون يفتح كاميرا إنستغرام ويرى الكنبة في غرفته</li>
-      <li>يحتاج مصمم لديه خبرة بسيطة بالبرنامج</li>
-      <li>أقوى أداة لتحويل المتردد إلى مشترٍ</li>
-    </ul>
+  <div class="platform-grid">
+    <div class="pl-card pl-ig">
+      <i class="fa-brands fa-instagram"></i>
+      <h5>Instagram</h5>
+      <p>Reels 9:16 + Stories + Carousel للمقارنات. الـ Hook أول 3 ثواني إلزامي.</p>
+      <div class="pl-ku">ریلز + ستوری + کارووسێل</div>
+    </div>
+    <div class="pl-card pl-tt">
+      <i class="fa-brands fa-tiktok"></i>
+      <h5>TikTok</h5>
+      <p>إيقاع أسرع + نصوص على الفيديو مباشرة. الهاشتاغ + الموقع داخل كل فيديو.</p>
+      <div class="pl-ku">خێرتر + دەق ل سەر فیدیویێ</div>
+    </div>
+    <div class="pl-card pl-yt">
+      <i class="fa-brands fa-youtube"></i>
+      <h5>YouTube Shorts</h5>
+      <p>نفس محتوى TikTok + عنوان فيه "معرض إيفان للأثاث دهوك" لتقوية SEO.</p>
+      <div class="pl-ku">SEO بووژانا + ناڤنیشانا ئاشکرا</div>
+    </div>
+    <div class="pl-card pl-sc">
+      <i class="fa-brands fa-snapchat"></i>
+      <h5>Snapchat</h5>
+      <p>جمهور الشباب الكردي — محتوى خفيف وعفوي وقصص قصيرة جداً.</p>
+      <div class="pl-ku">جەمهووریا گەنجان — nermê û bilez</div>
+    </div>
+    <div class="pl-card pl-fb">
+      <i class="fa-brands fa-facebook-f"></i>
+      <h5>Facebook</h5>
+      <p>جمهور أكبر سناً — بوستات مع سعر واضح وصور جودة عالية. Marketplace للمستعملة.</p>
+      <div class="pl-ku">Marketplace بو پارچێن کوندیار</div>
+    </div>
+    <div class="pl-card pl-wa">
+      <i class="fa-brands fa-whatsapp"></i>
+      <h5>WhatsApp</h5>
+      <p>كتالوج رقمي + Broadcast للـ VIP Club + رسائل التقييم بعد الشراء.</p>
+      <div class="pl-ku">کاتالوگ + VIP Club + هەلسەنگاندن</div>
+    </div>
+    <div class="pl-card pl-gg">
+      <i class="fa-brands fa-google"></i>
+      <h5>Google Business</h5>
+      <p>بوست كل 3 أيام + رد على كل تقييم + صور جديدة أسبوعياً. أولوية قصوى.</p>
+      <div class="pl-ku">هەر ۳ روژان + بەرسیڤ بو هەلسەنگاندنان</div>
+    </div>
+    <div class="pl-card pl-gm">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <h5>Google Maps</h5>
+      <p>صور عالية الجودة للمعرض والقطع. التقييمات تُحسّن الظهور في البحث المحلي.</p>
+      <div class="pl-ku">وێنایێن باش + هەلسەنگاندنان = رابۆنا باش</div>
+    </div>
   </div>
-
-  <div class="card">
-    <div class="card-glow-top"></div>
-    <div class="icon-box icon-e"><i class="fa-solid fa-brain"></i></div>
-    <div class="card-title em">مستشار الديكور الذكي</div>
-    <ul class="c-list rocket">
-      <li>الزبون يرسل صورة غرفته عبر واتساب</li>
-      <li>الفريق يستخدم <strong>RoomGPT</strong> أو ChatGPT-4o لتركيب الأثاث</li>
-      <li>يُرسل له صورة الغرفة مع القطع المقترحة</li>
-      <li>خدمة مجانية تميّزكم 100% عن المنافسين</li>
-    </ul>
-  </div>
-
 </div>
 
-<!-- ══════════════════════════════════
-   FOOTER
-══════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+   10. TOOLS
+══════════════════════════════════════ -->
+<div class="sec sec-gap" id="tools">
+  <div class="sh">
+    <div class="sh-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+    <div class="sh-text">
+      <h3>الأدوات المعتمدة للقسم</h3>
+      <p>لا تشتري مدفوعاً قبل إتقان المجاني — كل أداة في مكانها الصحيح</p>
+    </div>
+  </div>
+
+  <div class="card full">
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr>
+          <th>المهمة</th>
+          <th>الأداة</th>
+          <th>المسؤول</th>
+          <th>الأولوية</th>
+          <th>ملاحظة</th>
+        </tr>
+        <tr>
+          <td>مونتاج الريلز والفيديو</td>
+          <td><strong>CapCut PC</strong></td>
+          <td>الند</td>
+          <td><span class="chip c-r">دائماً</span></td>
+          <td>Auto Captions + Speed Ramp مدمجة</td>
+        </tr>
+        <tr>
+          <td>مونتاج الصفحة الخاصة بأيوب</td>
+          <td><strong>VN</strong></td>
+          <td>أيوب</td>
+          <td><span class="chip c-r">دائماً</span></td>
+          <td>أيوب يستخدمه بأسلوبه الشخصي</td>
+        </tr>
+        <tr>
+          <td>تصميم البوستات والهوية</td>
+          <td><strong>Photoshop / Canva</strong></td>
+          <td>أيوب</td>
+          <td><span class="chip c-r">دائماً</span></td>
+          <td>Photoshop للجودة العالية</td>
+        </tr>
+        <tr>
+          <td>رابط البايو الموحد</td>
+          <td><strong>Linktree</strong></td>
+          <td>مازن</td>
+          <td><span class="chip c-r">قريباً</span></td>
+          <td>يجمع كل الروابط في مكان واحد</td>
+        </tr>
+        <tr>
+          <td>روبوت واتساب</td>
+          <td><strong>ManyChat / WATI.io</strong></td>
+          <td>مازن + سرهاد</td>
+          <td><span class="chip c-p">أسبوع 1</span></td>
+          <td>رد آلي 24/7 على الأسئلة الشائعة</td>
+        </tr>
+        <tr>
+          <td>جدولة النشر</td>
+          <td><strong>Meta Business Suite</strong></td>
+          <td>الند + مازن</td>
+          <td><span class="chip c-p">أسبوع 1</span></td>
+          <td>مجاني ويغطي IG + FB</td>
+        </tr>
+        <tr>
+          <td>تحليل الأداء</td>
+          <td><strong>Metricool</strong></td>
+          <td>مازن</td>
+          <td><span class="chip c-p">أسبوع 2</span></td>
+          <td>تقارير مرئية لكل المنصات</td>
+        </tr>
+        <tr>
+          <td>تتبع الترندات</td>
+          <td><strong>TikTok Creative Center</strong></td>
+          <td>الند</td>
+          <td><span class="chip c-sky">مستمر</span></td>
+          <td>لاختيار الصوت الرائج المناسب</td>
+        </tr>
+        <tr>
+          <td>معرض 3D افتراضي</td>
+          <td><strong>Kuula.co / Matterport</strong></td>
+          <td>مازن</td>
+          <td><span class="chip c-g">شهر 2-3</span></td>
+          <td>جولة افتراضية للمعرض</td>
+        </tr>
+        <tr>
+          <td>فلتر الواقع المعزز AR</td>
+          <td><strong>Meta Spark AR Studio</strong></td>
+          <td>أيوب + مطور</td>
+          <td><span class="chip c-g">شهر 2-3</span></td>
+          <td>الزبون يرى القطعة في غرفته</td>
+        </tr>
+        <tr>
+          <td>مستشار الديكور AI</td>
+          <td><strong>RoomGPT + ChatGPT</strong></td>
+          <td>مازن</td>
+          <td><span class="chip c-g">شهر 2</span></td>
+          <td>الزبون يرسل صورة غرفته</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   FINAL GOLDEN RULES
+══════════════════════════════════════ -->
+<div class="sec" style="padding-bottom:80px;">
+  <div class="sh">
+    <div class="sh-icon" style="background:linear-gradient(135deg,var(--gold),#d97706);box-shadow:0 0 28px rgba(245,158,11,0.25);">
+      <i class="fa-solid fa-scroll"></i>
+    </div>
+    <div class="sh-text">
+      <h3 style="color:var(--gold);">القوانين الذهبية النهائية</h3>
+      <p>عشر قوانين تحكم عمل قسم التسويق في معرض إيفان</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card full">
+      <div class="steps">
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">1</div>
+          <div class="step-b">
+            <h5>الأمانة فوق كل شيء</h5>
+            <p>معرض إيفان بُني على الصدق — لا منشور ولا فيديو ولا كلام يخالف هذا المبدأ.</p>
+            <div class="ku">ئامانەت پیش هەر شتێ — ئاڤانا مە ل سەر دووروستی ئاڤابووئە</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">2</div>
+          <div class="step-b">
+            <h5>لا يُنشر شيء بدون هوية بصرية إيفان</h5>
+            <p>كل منشور يحمل قالب المعرض الثابت — الفردية في التصميم تضرب الهوية.</p>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">3</div>
+          <div class="step-b">
+            <h5>30 ثانية حد لا يُكسر</h5>
+            <p>أي فيديو أطول يُعاد مونتاجه — المشاهد يقرر في الثانية الثالثة.</p>
+            <div class="ku">۳۰ چرکه سنووری نەبالیا — بینەر د چرکا ۳ان دا دیار دکەت</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">4</div>
+          <div class="step-b">
+            <h5>كل رسالة جواب — لا صمت</h5>
+            <p>كل رسالة تأتي للصفحة تُجاب خلال 5 دقائق — الصمت خسارة مضمونة.</p>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">5</div>
+          <div class="step-b">
+            <h5>لقطة الـ Hook لا تقبل التساهل</h5>
+            <p>الند والند فقط يقرر إذا كان الـ Hook قوياً — وإذا لم يكن، يُعاد التصوير.</p>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">6</div>
+          <div class="step-b">
+            <h5>الصفحة القديمة = شفافية مطلقة</h5>
+            <p>كل عيب يُذكر، كل مقاس يُقال، كل ضمان يُوضح — أو لا ضمان يُوضح.</p>
+            <div class="ku">هەر کێشەیکێ دیار دبیت — دووروستی سودمەندترین بازاریابیئیئ</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">7</div>
+          <div class="step-b">
+            <h5>أيوب للإنتاج فقط — لا يُشغل بغيره</h5>
+            <p>طاقته كلها للكاميرا والتصميم. أي إشغال آخر = خسارة لمحتوى بجودة أعلى.</p>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">8</div>
+          <div class="step-b">
+            <h5>الند يقطع بلا رحمة</h5>
+            <p>كل ثانية ممللة تُحذف — الفيديو القصير المشوّق يتفوق دائماً على الطويل.</p>
+            <div class="ku">هەر چرکەیکا کانی — برین. فیدیویا کورت ل سەر درێژ دکالیمیت</div>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">9</div>
+          <div class="step-b">
+            <h5>مازن يراجع الاستراتيجية أسبوعياً</h5>
+            <p>كل أسبوع مراجعة للأداء وتعديل الخطة — ما لا يعمل يُبدّل فوراً.</p>
+          </div>
+        </div>
+        <div class="step" style="border-color:var(--gold);">
+          <div class="step-n gold">10</div>
+          <div class="step-b">
+            <h5>نبني اسماً لا مشاهدات</h5>
+            <p>الهدف الدائم: سمعة طيبة تدوم سنوات. المشاهدات اللحظية ليست المقياس الحقيقي.</p>
+            <div class="ku">ئامانجا مە: ناڤێ باش — نه ژمارەیا دیتنان</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
-  <div class="footer-brand">IVAN FURNITURE GALLERY</div>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">معرض إيفان للأثاث — دهوك، العراق</p>
-  <div class="footer-links">
-    <a href="#">Instagram</a>
-    <a href="#">TikTok</a>
-    <a href="#">YouTube</a>
-    <a href="#">Snapchat</a>
-    <a href="#">Google Maps</a>
-    <a href="#">WhatsApp</a>
-  </div>
-  <div class="footer-copy">
-    &copy; 2026 <span>Ivan Furniture Gallery — Duhok, Iraq</span>. All Rights Reserved.<br>
-    Unauthorized reproduction or distribution of this document is strictly prohibited.<br>
-    <em style="color:rgba(122,146,184,.35);font-size:12px;">Marketing Strategy & Design — Mazen Daoud | Marketing Manager</em>
+  <div class="ft-inner">
+    <div class="ft-brand">IVAN FURNITURE GALLERY</div>
+    <p class="ft-sub">
+      معرض إيفان  — دهوك،  ، <br>
+      Ivan Furniture Gallery — Duhok, Kurdistan Region, Iraq
+    </p>
+    <div class="socials">
+      <a href="tel:+9647502316274" class="sb" title="اتصل بنا"><i class="fa-solid fa-phone"></i></a>
+      <a href="#" class="sb"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="sb"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" class="sb"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" class="sb"><i class="fa-brands fa-snapchat"></i></a>
+      <a href="#" class="sb"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://wa.me/9647502316274" class="sb"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#" class="sb"><i class="fa-solid fa-location-dot"></i></a>
+    </div>
+    <a href="https://wa.me/9647502316274" class="wa-btn" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i> تواصل مع مازن: +964 750 231 6274
+    </a>
+    <div class="ft-copy">
+      © 2026 <span>Ivan Furniture Gallery</span> — All Rights Reserved.<br>
+      Issued by Ivan Marketing Management | إصدار إدارة تسويق إيفان — <span>مازن داوود</span>
+    </div>
   </div>
 </footer>
 
-<!-- ══════════════════════════════════
-   SCRIPTS
-══════════════════════════════════ -->
-<script>
-// ── STARS CANVAS ──
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
-let W, H, stars=[];
-function initStars(){
-  W=canvas.width=innerWidth; H=canvas.height=innerHeight;
-  stars=[];
-  for(let i=0;i<120;i++) stars.push({
-    x:Math.random()*W, y:Math.random()*H,
-    r:Math.random()*1.5+.3,
-    a:Math.random(),
-    da:(Math.random()*.006+.002)*(Math.random()>.5?1:-1)
-  });
-}
-function drawStars(){
-  ctx.clearRect(0,0,W,H);
-  stars.forEach(s=>{
-    s.a+=s.da;
-    if(s.a<=0||s.a>=1) s.da*=-1;
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(200,230,255,${s.a*.7})`;
-    ctx.fill();
-  });
-  requestAnimationFrame(drawStars);
-}
-window.addEventListener('resize',initStars);
-initStars(); drawStars();
+</div><!-- /wrap -->
 
-// ── SCROLL REVEAL ──
-const revealEls = document.querySelectorAll('.card, .day-row');
-const io = new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('visible'), i*60);
-    }
+<!-- ══════════════ SCRIPTS ══════════════ -->
+<script>
+/* THEME TOGGLE */
+function toggleTheme(){
+  const b=document.body;
+  const dark=b.getAttribute('data-theme')==='light';
+  b.setAttribute('data-theme',dark?'':'light');
+  if(dark)b.removeAttribute('data-theme');
+  else b.setAttribute('data-theme','light');
+  document.getElementById('themeIcon').className=b.getAttribute('data-theme')==='light'?'fa-solid fa-moon':'fa-solid fa-sun';
+}
+
+/* PARTICLES */
+const cv=document.getElementById('pc'),cx=cv.getContext('2d');
+let W,H,P=[];
+function init(){
+  W=cv.width=innerWidth;H=cv.height=innerHeight;P=[];
+  const n=W<768?35:70;
+  for(let i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.4,vx:Math.random()*.5-.25,vy:Math.random()*.5-.25});
+}
+function draw(){
+  cx.clearRect(0,0,W,H);
+  P.forEach(p=>{
+    cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    cx.fillStyle='rgba(168,85,247,.45)';cx.fill();
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
   });
-},{threshold:.1});
-revealEls.forEach(el=>io.observe(el));
+  for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
+    const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);
+    if(d<140){
+      cx.beginPath();
+      cx.strokeStyle=`rgba(168,85,247,${(1-d/140)*.15})`;
+      cx.lineWidth=.8;cx.moveTo(P[i].x,P[i].y);cx.lineTo(P[j].x,P[j].y);cx.stroke();
+    }
+  }
+  requestAnimationFrame(draw);
+}
+window.addEventListener('resize',init);init();draw();
+
+/* SCROLL REVEAL */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    const idx=Array.from(e.target.parentElement.children).indexOf(e.target);
+    e.target.style.transitionDelay=(idx*0.08)+'s';
+    e.target.classList.add('vis');
+  }
+}),{threshold:.08});
+document.querySelectorAll('.card,.person-card,.prin,.pl-card').forEach(el=>io.observe(el));
+
+/* ACTIVE NAV */
+const sections=document.querySelectorAll('.sec[id]');
+const navLinks=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)cur=s.id;});
+  navLinks.forEach(l=>{
+    l.classList.toggle('active',l.getAttribute('href')==='#'+cur);
+  });
+},{passive:true});
 </script>
 </body>
 </html>
